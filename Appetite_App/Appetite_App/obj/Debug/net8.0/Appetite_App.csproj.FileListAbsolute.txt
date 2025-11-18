@@ -139,3 +139,4 @@ C:\Users\luish\OneDrive\Documents\Arquitectura de Software\Appetite_Project\Appe
 C:\Users\luish\OneDrive\Documents\Arquitectura de Software\Appetite_Project\Appetite_App\Appetite_App\obj\Debug\net8.0\Appetite_App.pdb
 C:\Users\luish\OneDrive\Documents\Arquitectura de Software\Appetite_Project\Appetite_App\Appetite_App\obj\Debug\net8.0\Appetite_App.genruntimeconfig.cache
 C:\Users\luish\OneDrive\Documents\Arquitectura de Software\Appetite_Project\Appetite_App\Appetite_App\obj\Debug\net8.0\ref\Appetite_App.dll
+C:\Users\luish\OneDrive\Documents\Arquitectura de Software\Appetite_Project\Appetite_App\Appetite_App\obj\Debug\net8.0\Appetite_App.sourcelink.json

@@ -3,6 +3,54 @@
   "WorkspaceRootPath": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{720307DC-8211-48B1-BB71-76278839CCEC}|Appetite_App\\Appetite_App.csproj|c:\\users\\luish\\onedrive\\documents\\arquitectura de software\\appetite_project\\appetite_app\\appetite_app\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{720307DC-8211-48B1-BB71-76278839CCEC}|Appetite_App\\Appetite_App.csproj|solutionrelative:appetite_app\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{720307DC-8211-48B1-BB71-76278839CCEC}|Appetite_App\\Appetite_App.csproj|c:\\users\\luish\\onedrive\\documents\\arquitectura de software\\appetite_project\\appetite_app\\appetite_app\\views\\shared\\_layout.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{720307DC-8211-48B1-BB71-76278839CCEC}|Appetite_App\\Appetite_App.csproj|solutionrelative:appetite_app\\views\\shared\\_layout.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{720307DC-8211-48B1-BB71-76278839CCEC}|Appetite_App\\Appetite_App.csproj|c:\\users\\luish\\onedrive\\documents\\arquitectura de software\\appetite_project\\appetite_app\\appetite_app\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{720307DC-8211-48B1-BB71-76278839CCEC}|Appetite_App\\Appetite_App.csproj|solutionrelative:appetite_app\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{720307DC-8211-48B1-BB71-76278839CCEC}|Appetite_App\\Appetite_App.csproj|c:\\users\\luish\\onedrive\\documents\\arquitectura de software\\appetite_project\\appetite_app\\appetite_app\\repositories\\productorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{720307DC-8211-48B1-BB71-76278839CCEC}|Appetite_App\\Appetite_App.csproj|solutionrelative:appetite_app\\repositories\\productorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{720307DC-8211-48B1-BB71-76278839CCEC}|Appetite_App\\Appetite_App.csproj|c:\\users\\luish\\onedrive\\documents\\arquitectura de software\\appetite_project\\appetite_app\\appetite_app\\data\\repositories\\productorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{720307DC-8211-48B1-BB71-76278839CCEC}|Appetite_App\\Appetite_App.csproj|solutionrelative:appetite_app\\data\\repositories\\productorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{720307DC-8211-48B1-BB71-76278839CCEC}|Appetite_App\\Appetite_App.csproj|c:\\users\\luish\\onedrive\\documents\\arquitectura de software\\appetite_project\\appetite_app\\appetite_app\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{720307DC-8211-48B1-BB71-76278839CCEC}|Appetite_App\\Appetite_App.csproj|solutionrelative:appetite_app\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{720307DC-8211-48B1-BB71-76278839CCEC}|Appetite_App\\Appetite_App.csproj|c:\\users\\luish\\onedrive\\documents\\arquitectura de software\\appetite_project\\appetite_app\\appetite_app\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{720307DC-8211-48B1-BB71-76278839CCEC}|Appetite_App\\Appetite_App.csproj|solutionrelative:appetite_app\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{720307DC-8211-48B1-BB71-76278839CCEC}|Appetite_App\\Appetite_App.csproj|c:\\users\\luish\\onedrive\\documents\\arquitectura de software\\appetite_project\\appetite_app\\appetite_app\\services\\productoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{720307DC-8211-48B1-BB71-76278839CCEC}|Appetite_App\\Appetite_App.csproj|solutionrelative:appetite_app\\services\\productoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{720307DC-8211-48B1-BB71-76278839CCEC}|Appetite_App\\Appetite_App.csproj|c:\\users\\luish\\onedrive\\documents\\arquitectura de software\\appetite_project\\appetite_app\\appetite_app\\services\\iproductoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{720307DC-8211-48B1-BB71-76278839CCEC}|Appetite_App\\Appetite_App.csproj|solutionrelative:appetite_app\\services\\iproductoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{720307DC-8211-48B1-BB71-76278839CCEC}|Appetite_App\\Appetite_App.csproj|c:\\users\\luish\\onedrive\\documents\\arquitectura de software\\appetite_project\\appetite_app\\appetite_app\\repositories\\iproductorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{720307DC-8211-48B1-BB71-76278839CCEC}|Appetite_App\\Appetite_App.csproj|solutionrelative:appetite_app\\repositories\\iproductorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{720307DC-8211-48B1-BB71-76278839CCEC}|Appetite_App\\Appetite_App.csproj|c:\\users\\luish\\onedrive\\documents\\arquitectura de software\\appetite_project\\appetite_app\\appetite_app\\views\\auth\\registro.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{720307DC-8211-48B1-BB71-76278839CCEC}|Appetite_App\\Appetite_App.csproj|solutionrelative:appetite_app\\views\\auth\\registro.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{720307DC-8211-48B1-BB71-76278839CCEC}|Appetite_App\\Appetite_App.csproj|c:\\users\\luish\\onedrive\\documents\\arquitectura de software\\appetite_project\\appetite_app\\appetite_app\\views\\auth\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{720307DC-8211-48B1-BB71-76278839CCEC}|Appetite_App\\Appetite_App.csproj|solutionrelative:appetite_app\\views\\auth\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{720307DC-8211-48B1-BB71-76278839CCEC}|Appetite_App\\Appetite_App.csproj|c:\\users\\luish\\onedrive\\documents\\arquitectura de software\\appetite_project\\appetite_app\\appetite_app\\dtos\\carritoitemdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{720307DC-8211-48B1-BB71-76278839CCEC}|Appetite_App\\Appetite_App.csproj|solutionrelative:appetite_app\\dtos\\carritoitemdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -15,20 +63,12 @@
       "RelativeMoniker": "D:0:0:{720307DC-8211-48B1-BB71-76278839CCEC}|Appetite_App\\Appetite_App.csproj|solutionrelative:appetite_app\\data\\dbinitializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{720307DC-8211-48B1-BB71-76278839CCEC}|Appetite_App\\Appetite_App.csproj|c:\\users\\luish\\onedrive\\documents\\arquitectura de software\\appetite_project\\appetite_app\\appetite_app\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{720307DC-8211-48B1-BB71-76278839CCEC}|Appetite_App\\Appetite_App.csproj|solutionrelative:appetite_app\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{720307DC-8211-48B1-BB71-76278839CCEC}|Appetite_App\\Appetite_App.csproj|c:\\users\\luish\\onedrive\\documents\\arquitectura de software\\appetite_project\\appetite_app\\appetite_app\\data\\appetitecontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{720307DC-8211-48B1-BB71-76278839CCEC}|Appetite_App\\Appetite_App.csproj|solutionrelative:appetite_app\\data\\appetitecontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{720307DC-8211-48B1-BB71-76278839CCEC}|Appetite_App\\Appetite_App.csproj|c:\\users\\luish\\onedrive\\documents\\arquitectura de software\\appetite_project\\appetite_app\\appetite_app\\data\\databaseconnectionmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{720307DC-8211-48B1-BB71-76278839CCEC}|Appetite_App\\Appetite_App.csproj|solutionrelative:appetite_app\\data\\databaseconnectionmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Migrations\\20251116180608_InitialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Appetite_App\\Migrations\\20251116180608_InitialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{720307DC-8211-48B1-BB71-76278839CCEC}|Appetite_App\\Appetite_App.csproj|c:\\users\\luish\\onedrive\\documents\\arquitectura de software\\appetite_project\\appetite_app\\appetite_app\\models\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -73,14 +113,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{720307DC-8211-48B1-BB71-76278839CCEC}|Appetite_App\\Appetite_App.csproj|c:\\users\\luish\\onedrive\\documents\\arquitectura de software\\appetite_project\\appetite_app\\appetite_app\\repositories\\icategoriarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{720307DC-8211-48B1-BB71-76278839CCEC}|Appetite_App\\Appetite_App.csproj|solutionrelative:appetite_app\\repositories\\icategoriarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{720307DC-8211-48B1-BB71-76278839CCEC}|Appetite_App\\Appetite_App.csproj|c:\\users\\luish\\onedrive\\documents\\arquitectura de software\\appetite_project\\appetite_app\\appetite_app\\repositories\\productorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{720307DC-8211-48B1-BB71-76278839CCEC}|Appetite_App\\Appetite_App.csproj|solutionrelative:appetite_app\\repositories\\productorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{720307DC-8211-48B1-BB71-76278839CCEC}|Appetite_App\\Appetite_App.csproj|c:\\users\\luish\\onedrive\\documents\\arquitectura de software\\appetite_project\\appetite_app\\appetite_app\\repositories\\iproductorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{720307DC-8211-48B1-BB71-76278839CCEC}|Appetite_App\\Appetite_App.csproj|solutionrelative:appetite_app\\repositories\\iproductorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{720307DC-8211-48B1-BB71-76278839CCEC}|Appetite_App\\Appetite_App.csproj|c:\\users\\luish\\onedrive\\documents\\arquitectura de software\\appetite_project\\appetite_app\\appetite_app\\controllers\\productocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -141,14 +173,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{720307DC-8211-48B1-BB71-76278839CCEC}|Appetite_App\\Appetite_App.csproj|c:\\users\\luish\\onedrive\\documents\\arquitectura de software\\appetite_project\\appetite_app\\appetite_app\\views\\admin\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{720307DC-8211-48B1-BB71-76278839CCEC}|Appetite_App\\Appetite_App.csproj|solutionrelative:appetite_app\\views\\admin\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{720307DC-8211-48B1-BB71-76278839CCEC}|Appetite_App\\Appetite_App.csproj|c:\\users\\luish\\onedrive\\documents\\arquitectura de software\\appetite_project\\appetite_app\\appetite_app\\views\\auth\\registro.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{720307DC-8211-48B1-BB71-76278839CCEC}|Appetite_App\\Appetite_App.csproj|solutionrelative:appetite_app\\views\\auth\\registro.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{720307DC-8211-48B1-BB71-76278839CCEC}|Appetite_App\\Appetite_App.csproj|c:\\users\\luish\\onedrive\\documents\\arquitectura de software\\appetite_project\\appetite_app\\appetite_app\\views\\auth\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{720307DC-8211-48B1-BB71-76278839CCEC}|Appetite_App\\Appetite_App.csproj|solutionrelative:appetite_app\\views\\auth\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{720307DC-8211-48B1-BB71-76278839CCEC}|Appetite_App\\Appetite_App.csproj|c:\\users\\luish\\onedrive\\documents\\arquitectura de software\\appetite_project\\appetite_app\\appetite_app\\patterns\\observer\\ordersubject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -259,12 +283,8 @@
       "RelativeMoniker": "D:0:0:{720307DC-8211-48B1-BB71-76278839CCEC}|Appetite_App\\Appetite_App.csproj|solutionrelative:appetite_app\\views\\admin\\categorias.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{720307DC-8211-48B1-BB71-76278839CCEC}|Appetite_App\\Appetite_App.csproj|c:\\users\\luish\\onedrive\\documents\\arquitectura de software\\appetite_project\\appetite_app\\appetite_app\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{720307DC-8211-48B1-BB71-76278839CCEC}|Appetite_App\\Appetite_App.csproj|solutionrelative:appetite_app\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{720307DC-8211-48B1-BB71-76278839CCEC}|Appetite_App\\Appetite_App.csproj|c:\\users\\luish\\onedrive\\documents\\arquitectura de software\\appetite_project\\appetite_app\\appetite_app\\views\\shared\\_layout.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{720307DC-8211-48B1-BB71-76278839CCEC}|Appetite_App\\Appetite_App.csproj|solutionrelative:appetite_app\\views\\shared\\_layout.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{720307DC-8211-48B1-BB71-76278839CCEC}|Appetite_App\\Appetite_App.csproj|c:\\users\\luish\\onedrive\\documents\\arquitectura de software\\appetite_project\\appetite_app\\appetite_app\\migrations\\20251116180608_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{720307DC-8211-48B1-BB71-76278839CCEC}|Appetite_App\\Appetite_App.csproj|solutionrelative:appetite_app\\migrations\\20251116180608_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -274,89 +294,50 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 9,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "Categoria.cs",
-              "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Models\\Categoria.cs",
-              "RelativeDocumentMoniker": "Appetite_App\\Models\\Categoria.cs",
-              "ToolTip": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Models\\Categoria.cs",
-              "RelativeToolTip": "Appetite_App\\Models\\Categoria.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-16T07:35:35.897Z",
+              "DocumentIndex": 2,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "Appetite_App\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "Appetite_App\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAADYAAAAAAAAAAAAAADsAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-18T04:51:47.821Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "AppetiteContext.cs",
-              "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Data\\AppetiteContext.cs",
-              "RelativeDocumentMoniker": "Appetite_App\\Data\\AppetiteContext.cs",
-              "ToolTip": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Data\\AppetiteContext.cs",
-              "RelativeToolTip": "Appetite_App\\Data\\AppetiteContext.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACkAAAAvAAAAAAAAAA==",
+              "DocumentIndex": 7,
+              "Title": "ProductoService.cs",
+              "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Services\\ProductoService.cs",
+              "RelativeDocumentMoniker": "Appetite_App\\Services\\ProductoService.cs",
+              "ToolTip": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Services\\ProductoService.cs",
+              "RelativeToolTip": "Appetite_App\\Services\\ProductoService.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAwAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-16T07:44:28.757Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "DetalleOrden.cs",
-              "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Models\\DetalleOrden.cs",
-              "RelativeDocumentMoniker": "Appetite_App\\Models\\DetalleOrden.cs",
-              "ToolTip": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Models\\DetalleOrden.cs",
-              "RelativeToolTip": "Appetite_App\\Models\\DetalleOrden.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAAwBMAAAA6AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-16T07:37:43.182Z",
+              "WhenOpened": "2025-11-18T04:33:36.65Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 8,
-              "Title": "Producto.cs",
-              "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Models\\Producto.cs",
-              "RelativeDocumentMoniker": "Appetite_App\\Models\\Producto.cs",
-              "ToolTip": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Models\\Producto.cs",
-              "RelativeToolTip": "Appetite_App\\Models\\Producto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAANAAAAAAAAAA==",
+              "Title": "IProductoService.cs",
+              "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Services\\IProductoService.cs",
+              "RelativeDocumentMoniker": "Appetite_App\\Services\\IProductoService.cs",
+              "ToolTip": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Services\\IProductoService.cs",
+              "RelativeToolTip": "Appetite_App\\Services\\IProductoService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-16T07:36:12.916Z",
+              "WhenOpened": "2025-11-18T04:31:52.356Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "DbInitializer.cs",
-              "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Data\\DbInitializer.cs",
-              "RelativeDocumentMoniker": "Appetite_App\\Data\\DbInitializer.cs",
-              "ToolTip": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Data\\DbInitializer.cs",
-              "RelativeToolTip": "Appetite_App\\Data\\DbInitializer.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABEAAABWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-16T07:45:55.982Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "DatabaseConnectionManager.cs",
-              "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Data\\DatabaseConnectionManager.cs",
-              "RelativeDocumentMoniker": "Appetite_App\\Data\\DatabaseConnectionManager.cs",
-              "ToolTip": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Data\\DatabaseConnectionManager.cs",
-              "RelativeToolTip": "Appetite_App\\Data\\DatabaseConnectionManager.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAqAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-16T07:46:59.942Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 22,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\appsettings.json",
               "RelativeDocumentMoniker": "Appetite_App\\appsettings.json",
@@ -364,12 +345,11 @@
               "RelativeToolTip": "Appetite_App\\appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-11-16T06:25:21.904Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-16T06:25:21.904Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 13,
               "Title": "UserManagement.cs",
               "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Services\\UserManagement.cs",
               "RelativeDocumentMoniker": "Appetite_App\\Services\\UserManagement.cs",
@@ -377,25 +357,101 @@
               "RelativeToolTip": "Appetite_App\\Services\\UserManagement.cs",
               "ViewState": "AgIAAEAAAAAAAAAAAAAkwCcAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-16T08:21:26.152Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-16T08:21:26.152Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Program.cs",
               "RelativeDocumentMoniker": "Appetite_App\\Program.cs",
               "ToolTip": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Program.cs",
               "RelativeToolTip": "Appetite_App\\Program.cs",
-              "ViewState": "AgIAAC0AAAAAAAAAAAAAAC4AAAAaAAAAAAAAAA==",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAACoAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-16T07:04:31.723Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "_Layout.cs",
+              "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Views\\Shared\\_Layout.cs",
+              "RelativeDocumentMoniker": "Appetite_App\\Views\\Shared\\_Layout.cs",
+              "ToolTip": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Views\\Shared\\_Layout.cs",
+              "RelativeToolTip": "Appetite_App\\Views\\Shared\\_Layout.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-16T06:29:46.533Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Appetite_App\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Appetite_App\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAADoAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-16T06:30:57.258Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ProductoRepository.cs",
+              "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Data\\Repositories\\ProductoRepository.cs",
+              "RelativeDocumentMoniker": "Appetite_App\\Data\\Repositories\\ProductoRepository.cs",
+              "ToolTip": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Data\\Repositories\\ProductoRepository.cs",
+              "RelativeToolTip": "Appetite_App\\Data\\Repositories\\ProductoRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-18T04:35:01.322Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Appetite_App\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Appetite_App\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-18T04:39:54.344Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ProductoRepository.cs",
+              "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Repositories\\ProductoRepository.cs",
+              "RelativeDocumentMoniker": "Appetite_App\\Repositories\\ProductoRepository.cs",
+              "ToolTip": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Repositories\\ProductoRepository.cs",
+              "RelativeToolTip": "Appetite_App\\Repositories\\ProductoRepository.cs",
+              "ViewState": "AgIAADkAAAAAAAAAAAAAAAQAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-16T08:36:40.491Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "DatabaseConnectionManager.cs",
+              "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Data\\DatabaseConnectionManager.cs",
+              "RelativeDocumentMoniker": "Appetite_App\\Data\\DatabaseConnectionManager.cs",
+              "ToolTip": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Data\\DatabaseConnectionManager.cs",
+              "RelativeToolTip": "Appetite_App\\Data\\DatabaseConnectionManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-16T07:46:59.942Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
               "Title": "CarritoItemDTO.cs",
               "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\DTOs\\CarritoItemDTO.cs",
               "RelativeDocumentMoniker": "Appetite_App\\DTOs\\CarritoItemDTO.cs",
@@ -408,7 +464,106 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 11,
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Views\\Auth\\Login.cshtml",
+              "RelativeDocumentMoniker": "Appetite_App\\Views\\Auth\\Login.cshtml",
+              "ToolTip": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Views\\Auth\\Login.cshtml",
+              "RelativeToolTip": "Appetite_App\\Views\\Auth\\Login.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-16T08:27:45.406Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Registro.cshtml",
+              "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Views\\Auth\\Registro.cshtml",
+              "RelativeDocumentMoniker": "Appetite_App\\Views\\Auth\\Registro.cshtml",
+              "ToolTip": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Views\\Auth\\Registro.cshtml",
+              "RelativeToolTip": "Appetite_App\\Views\\Auth\\Registro.cshtml",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAACUAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-16T08:28:27.036Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "IProductoRepository.cs",
+              "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Repositories\\IProductoRepository.cs",
+              "RelativeDocumentMoniker": "Appetite_App\\Repositories\\IProductoRepository.cs",
+              "ToolTip": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Repositories\\IProductoRepository.cs",
+              "RelativeToolTip": "Appetite_App\\Repositories\\IProductoRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-16T08:36:05.301Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "DbInitializer.cs",
+              "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Data\\DbInitializer.cs",
+              "RelativeDocumentMoniker": "Appetite_App\\Data\\DbInitializer.cs",
+              "ToolTip": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Data\\DbInitializer.cs",
+              "RelativeToolTip": "Appetite_App\\Data\\DbInitializer.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABEAAABWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-16T07:45:55.982Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Producto.cs",
+              "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Models\\Producto.cs",
+              "RelativeDocumentMoniker": "Appetite_App\\Models\\Producto.cs",
+              "ToolTip": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Models\\Producto.cs",
+              "RelativeToolTip": "Appetite_App\\Models\\Producto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-16T07:36:12.916Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "DetalleOrden.cs",
+              "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Models\\DetalleOrden.cs",
+              "RelativeDocumentMoniker": "Appetite_App\\Models\\DetalleOrden.cs",
+              "ToolTip": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Models\\DetalleOrden.cs",
+              "RelativeToolTip": "Appetite_App\\Models\\DetalleOrden.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAAwBMAAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-16T07:37:43.182Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "AppetiteContext.cs",
+              "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Data\\AppetiteContext.cs",
+              "RelativeDocumentMoniker": "Appetite_App\\Data\\AppetiteContext.cs",
+              "ToolTip": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Data\\AppetiteContext.cs",
+              "RelativeToolTip": "Appetite_App\\Data\\AppetiteContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACkAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-16T07:44:28.757Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "Categoria.cs",
+              "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Models\\Categoria.cs",
+              "RelativeDocumentMoniker": "Appetite_App\\Models\\Categoria.cs",
+              "ToolTip": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Models\\Categoria.cs",
+              "RelativeToolTip": "Appetite_App\\Models\\Categoria.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-16T07:35:35.897Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 70,
               "Title": "20251116180608_InitialCreate.cs",
               "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Migrations\\20251116180608_InitialCreate.cs",
               "RelativeDocumentMoniker": "Appetite_App\\Migrations\\20251116180608_InitialCreate.cs",
@@ -416,12 +571,11 @@
               "RelativeToolTip": "Appetite_App\\Migrations\\20251116180608_InitialCreate.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-16T18:06:08.527Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-16T18:06:08.527Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 23,
               "Title": "OrdenController.cs",
               "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Controllers\\OrdenController.cs",
               "RelativeDocumentMoniker": "Appetite_App\\Controllers\\OrdenController.cs",
@@ -429,12 +583,11 @@
               "RelativeToolTip": "Appetite_App\\Controllers\\OrdenController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-16T07:42:13.387Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-16T07:42:13.387Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 19,
               "Title": "PreOrden.cs",
               "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Models\\PreOrden.cs",
               "RelativeDocumentMoniker": "Appetite_App\\Models\\PreOrden.cs",
@@ -442,12 +595,11 @@
               "RelativeToolTip": "Appetite_App\\Models\\PreOrden.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-16T07:37:06.893Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-16T07:37:06.893Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 17,
               "Title": "Usuario.cs",
               "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Models\\Usuario.cs",
               "RelativeDocumentMoniker": "Appetite_App\\Models\\Usuario.cs",
@@ -455,12 +607,11 @@
               "RelativeToolTip": "Appetite_App\\Models\\Usuario.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-16T07:34:42.925Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-16T07:34:42.925Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 24,
               "Title": "ClienteController.cs",
               "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Controllers\\ClienteController.cs",
               "RelativeDocumentMoniker": "Appetite_App\\Controllers\\ClienteController.cs",
@@ -472,7 +623,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 26,
               "Title": "CategoriaRepository.cs",
               "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Repositories\\CategoriaRepository.cs",
               "RelativeDocumentMoniker": "Appetite_App\\Repositories\\CategoriaRepository.cs",
@@ -484,7 +635,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 27,
               "Title": "ICategoriaRepository.cs",
               "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Repositories\\ICategoriaRepository.cs",
               "RelativeDocumentMoniker": "Appetite_App\\Repositories\\ICategoriaRepository.cs",
@@ -496,31 +647,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "ProductoRepository.cs",
-              "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Repositories\\ProductoRepository.cs",
-              "RelativeDocumentMoniker": "Appetite_App\\Repositories\\ProductoRepository.cs",
-              "ToolTip": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Repositories\\ProductoRepository.cs",
-              "RelativeToolTip": "Appetite_App\\Repositories\\ProductoRepository.cs",
-              "ViewState": "AgIAABwAAAAAAAAAAAAkwDAAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-16T08:36:40.491Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "IProductoRepository.cs",
-              "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Repositories\\IProductoRepository.cs",
-              "RelativeDocumentMoniker": "Appetite_App\\Repositories\\IProductoRepository.cs",
-              "ToolTip": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Repositories\\IProductoRepository.cs",
-              "RelativeToolTip": "Appetite_App\\Repositories\\IProductoRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAhAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-16T08:36:05.301Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 25,
               "Title": "CategoriaController.cs",
               "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Controllers\\CategoriaController.cs",
               "RelativeDocumentMoniker": "Appetite_App\\Controllers\\CategoriaController.cs",
@@ -532,7 +659,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 28,
               "Title": "ProductoController.cs",
               "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Controllers\\ProductoController.cs",
               "RelativeDocumentMoniker": "Appetite_App\\Controllers\\ProductoController.cs",
@@ -544,7 +671,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 29,
               "Title": "UsuarioRepository.cs",
               "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Repositories\\UsuarioRepository.cs",
               "RelativeDocumentMoniker": "Appetite_App\\Repositories\\UsuarioRepository.cs",
@@ -556,7 +683,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 30,
               "Title": "IUsuarioRepository.cs",
               "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Repositories\\IUsuarioRepository.cs",
               "RelativeDocumentMoniker": "Appetite_App\\Repositories\\IUsuarioRepository.cs",
@@ -568,7 +695,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 31,
               "Title": "OrdenService.cs",
               "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Services\\OrdenService.cs",
               "RelativeDocumentMoniker": "Appetite_App\\Services\\OrdenService.cs",
@@ -580,7 +707,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 32,
               "Title": "EditarProducto.cshtml",
               "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Views\\Admin\\EditarProducto.cshtml",
               "RelativeDocumentMoniker": "Appetite_App\\Views\\Admin\\EditarProducto.cshtml",
@@ -592,7 +719,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 33,
               "Title": "UsuarioController.cs",
               "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Controllers\\UsuarioController.cs",
               "RelativeDocumentMoniker": "Appetite_App\\Controllers\\UsuarioController.cs",
@@ -604,7 +731,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 34,
               "Title": "AdminController.cs",
               "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Controllers\\AdminController.cs",
               "RelativeDocumentMoniker": "Appetite_App\\Controllers\\AdminController.cs",
@@ -616,7 +743,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 35,
               "Title": "RegistroUsuarioDTO.cs",
               "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\DTOs\\RegistroUsuarioDTO.cs",
               "RelativeDocumentMoniker": "Appetite_App\\DTOs\\RegistroUsuarioDTO.cs",
@@ -628,7 +755,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 39,
               "Title": "OrdenRepository.cs",
               "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Repositories\\OrdenRepository.cs",
               "RelativeDocumentMoniker": "Appetite_App\\Repositories\\OrdenRepository.cs",
@@ -640,7 +767,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 40,
               "Title": "IOrdenRepository.cs",
               "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Repositories\\IOrdenRepository.cs",
               "RelativeDocumentMoniker": "Appetite_App\\Repositories\\IOrdenRepository.cs",
@@ -652,7 +779,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 38,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Views\\Cliente\\Index.cshtml",
               "RelativeDocumentMoniker": "Appetite_App\\Views\\Cliente\\Index.cshtml",
@@ -664,7 +791,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 37,
               "Title": "Carrito.cshtml",
               "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Views\\Cliente\\Carrito.cshtml",
               "RelativeDocumentMoniker": "Appetite_App\\Views\\Cliente\\Carrito.cshtml",
@@ -676,7 +803,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 36,
               "Title": "AuthController.cs",
               "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Controllers\\AuthController.cs",
               "RelativeDocumentMoniker": "Appetite_App\\Controllers\\AuthController.cs",
@@ -688,31 +815,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
-              "Title": "Registro.cshtml",
-              "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Views\\Auth\\Registro.cshtml",
-              "RelativeDocumentMoniker": "Appetite_App\\Views\\Auth\\Registro.cshtml",
-              "ToolTip": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Views\\Auth\\Registro.cshtml",
-              "RelativeToolTip": "Appetite_App\\Views\\Auth\\Registro.cshtml",
-              "ViewState": "AgIAABUAAAAAAAAAAAAAAB0AAAAGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-16T08:28:27.036Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 36,
-              "Title": "Login.cshtml",
-              "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Views\\Auth\\Login.cshtml",
-              "RelativeDocumentMoniker": "Appetite_App\\Views\\Auth\\Login.cshtml",
-              "ToolTip": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Views\\Auth\\Login.cshtml",
-              "RelativeToolTip": "Appetite_App\\Views\\Auth\\Login.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-16T08:27:45.406Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 43,
               "Title": "OrderSubject.cs",
               "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Patterns\\Observer\\OrderSubject.cs",
               "RelativeDocumentMoniker": "Appetite_App\\Patterns\\Observer\\OrderSubject.cs",
@@ -724,7 +827,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 42,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Views\\Admin\\Index.cshtml",
               "RelativeDocumentMoniker": "Appetite_App\\Views\\Admin\\Index.cshtml",
@@ -736,7 +839,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 41,
               "Title": "Usuarios.cshtml",
               "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Views\\Admin\\Usuarios.cshtml",
               "RelativeDocumentMoniker": "Appetite_App\\Views\\Admin\\Usuarios.cshtml",
@@ -748,7 +851,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 44,
               "Title": "NotificacionObserver.cs",
               "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Patterns\\Observer\\NotificacionObserver.cs",
               "RelativeDocumentMoniker": "Appetite_App\\Patterns\\Observer\\NotificacionObserver.cs",
@@ -760,7 +863,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 45,
               "Title": "AuditorObserver.cs",
               "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Patterns\\Observer\\AuditorObserver.cs",
               "RelativeDocumentMoniker": "Appetite_App\\Patterns\\Observer\\AuditorObserver.cs",
@@ -772,7 +875,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 46,
               "Title": "InventarioObserver.cs",
               "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Patterns\\Observer\\InventarioObserver.cs",
               "RelativeDocumentMoniker": "Appetite_App\\Patterns\\Observer\\InventarioObserver.cs",
@@ -784,7 +887,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
+              "DocumentIndex": 47,
               "Title": "IOrderSubject.cs",
               "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Patterns\\Observer\\IOrderSubject.cs",
               "RelativeDocumentMoniker": "Appetite_App\\Patterns\\Observer\\IOrderSubject.cs",
@@ -796,7 +899,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 48,
               "Title": "IOrderObserver.cs",
               "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Patterns\\Observer\\IOrderObserver.cs",
               "RelativeDocumentMoniker": "Appetite_App\\Patterns\\Observer\\IOrderObserver.cs",
@@ -808,7 +911,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 49,
               "Title": "Director.cs",
               "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Patterns\\Builder\\Director.cs",
               "RelativeDocumentMoniker": "Appetite_App\\Patterns\\Builder\\Director.cs",
@@ -820,7 +923,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 44,
+              "DocumentIndex": 50,
               "Title": "PreOrdenBuilder.cs",
               "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Patterns\\Builder\\PreOrdenBuilder.cs",
               "RelativeDocumentMoniker": "Appetite_App\\Patterns\\Builder\\PreOrdenBuilder.cs",
@@ -832,7 +935,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 45,
+              "DocumentIndex": 51,
               "Title": "IPedidoBuilder.cs",
               "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Patterns\\Builder\\IPedidoBuilder.cs",
               "RelativeDocumentMoniker": "Appetite_App\\Patterns\\Builder\\IPedidoBuilder.cs",
@@ -844,7 +947,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 46,
+              "DocumentIndex": 52,
               "Title": "ClientFactory.cs",
               "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Patterns\\Factory\\ClientFactory.cs",
               "RelativeDocumentMoniker": "Appetite_App\\Patterns\\Factory\\ClientFactory.cs",
@@ -856,7 +959,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 47,
+              "DocumentIndex": 53,
               "Title": "AdminFactory.cs",
               "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Patterns\\Factory\\AdminFactory.cs",
               "RelativeDocumentMoniker": "Appetite_App\\Patterns\\Factory\\AdminFactory.cs",
@@ -868,7 +971,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 48,
+              "DocumentIndex": 54,
               "Title": "UserFactory.cs",
               "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Patterns\\Factory\\UserFactory.cs",
               "RelativeDocumentMoniker": "Appetite_App\\Patterns\\Factory\\UserFactory.cs",
@@ -880,7 +983,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 49,
+              "DocumentIndex": 55,
               "Title": "BebidaGrandeDecorator.cs",
               "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Patterns\\Decorator\\BebidaGrandeDecorator.cs",
               "RelativeDocumentMoniker": "Appetite_App\\Patterns\\Decorator\\BebidaGrandeDecorator.cs",
@@ -892,7 +995,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 50,
+              "DocumentIndex": 56,
               "Title": "CarneDobleDecorator.cs",
               "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Patterns\\Decorator\\CarneDobleDecorator.cs",
               "RelativeDocumentMoniker": "Appetite_App\\Patterns\\Decorator\\CarneDobleDecorator.cs",
@@ -904,7 +1007,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 51,
+              "DocumentIndex": 57,
               "Title": "QuesoExtraDecorator.cs",
               "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Patterns\\Decorator\\QuesoExtraDecorator.cs",
               "RelativeDocumentMoniker": "Appetite_App\\Patterns\\Decorator\\QuesoExtraDecorator.cs",
@@ -916,7 +1019,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 52,
+              "DocumentIndex": 58,
               "Title": "ProductoDecorator.cs",
               "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Patterns\\Decorator\\ProductoDecorator.cs",
               "RelativeDocumentMoniker": "Appetite_App\\Patterns\\Decorator\\ProductoDecorator.cs",
@@ -928,7 +1031,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 53,
+              "DocumentIndex": 59,
               "Title": "ProductoConcreto.cs",
               "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Patterns\\Decorator\\ProductoConcreto.cs",
               "RelativeDocumentMoniker": "Appetite_App\\Patterns\\Decorator\\ProductoConcreto.cs",
@@ -940,7 +1043,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 54,
+              "DocumentIndex": 60,
               "Title": "IProductoComponente.cs",
               "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Patterns\\Decorator\\IProductoComponente.cs",
               "RelativeDocumentMoniker": "Appetite_App\\Patterns\\Decorator\\IProductoComponente.cs",
@@ -952,7 +1055,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 55,
+              "DocumentIndex": 61,
               "Title": "Privacy.cshtml",
               "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Views\\Home\\Privacy.cshtml",
               "RelativeDocumentMoniker": "Appetite_App\\Views\\Home\\Privacy.cshtml",
@@ -964,7 +1067,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 62,
+              "DocumentIndex": 68,
               "Title": "CrearCategoria.cshtml",
               "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Views\\Admin\\CrearCategoria.cshtml",
               "RelativeDocumentMoniker": "Appetite_App\\Views\\Admin\\CrearCategoria.cshtml",
@@ -976,7 +1079,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 63,
+              "DocumentIndex": 69,
               "Title": "Categorias.cshtml",
               "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Views\\Admin\\Categorias.cshtml",
               "RelativeDocumentMoniker": "Appetite_App\\Views\\Admin\\Categorias.cshtml",
@@ -988,7 +1091,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 59,
+              "DocumentIndex": 65,
               "Title": "Ordenes.cshtml",
               "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Views\\Admin\\Ordenes.cshtml",
               "RelativeDocumentMoniker": "Appetite_App\\Views\\Admin\\Ordenes.cshtml",
@@ -1000,7 +1103,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 60,
+              "DocumentIndex": 66,
               "Title": "CrearUsuario.cshtml",
               "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Views\\Admin\\CrearUsuario.cshtml",
               "RelativeDocumentMoniker": "Appetite_App\\Views\\Admin\\CrearUsuario.cshtml",
@@ -1012,7 +1115,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 61,
+              "DocumentIndex": 67,
               "Title": "CrearProducto.cshtml",
               "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Views\\Admin\\CrearProducto.cshtml",
               "RelativeDocumentMoniker": "Appetite_App\\Views\\Admin\\CrearProducto.cshtml",
@@ -1024,7 +1127,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 58,
+              "DocumentIndex": 64,
               "Title": "Productos.cshtml",
               "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Views\\Admin\\Productos.cshtml",
               "RelativeDocumentMoniker": "Appetite_App\\Views\\Admin\\Productos.cshtml",
@@ -1036,7 +1139,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 57,
+              "DocumentIndex": 63,
               "Title": "DetalleOrden.cshtml",
               "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Views\\Cliente\\DetalleOrden.cshtml",
               "RelativeDocumentMoniker": "Appetite_App\\Views\\Cliente\\DetalleOrden.cshtml",
@@ -1048,7 +1151,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 56,
+              "DocumentIndex": 62,
               "Title": "MisOrdenes.cshtml",
               "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Views\\Cliente\\MisOrdenes.cshtml",
               "RelativeDocumentMoniker": "Appetite_App\\Views\\Cliente\\MisOrdenes.cshtml",
@@ -1057,30 +1160,6 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-11-16T06:41:38.411Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 64,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "Appetite_App\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "Appetite_App\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAEIAAAAAAAAAAAAAAGsAAAAHAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-16T06:30:57.258Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 65,
-              "Title": "_Layout.cs",
-              "DocumentMoniker": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Views\\Shared\\_Layout.cs",
-              "RelativeDocumentMoniker": "Appetite_App\\Views\\Shared\\_Layout.cs",
-              "ToolTip": "C:\\Users\\luish\\OneDrive\\Documents\\Arquitectura de Software\\Appetite_Project\\Appetite_App\\Appetite_App\\Views\\Shared\\_Layout.cs",
-              "RelativeToolTip": "Appetite_App\\Views\\Shared\\_Layout.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-16T06:29:46.533Z"
             }
           ]
         }

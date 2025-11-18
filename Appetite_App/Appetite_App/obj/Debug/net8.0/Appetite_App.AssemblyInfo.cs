@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Appetite_App")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+369167703a2b44f61b0bbc532b5edb767b566f21")]
 [assembly: System.Reflection.AssemblyProductAttribute("Appetite_App")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Appetite_App")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

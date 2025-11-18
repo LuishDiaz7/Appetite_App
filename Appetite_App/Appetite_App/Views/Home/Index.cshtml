@@ -1,8 +1,60 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model IEnumerable<IGrouping<string, Appetite_App.Models.Producto>>
+
+@{
+    ViewData["Title"] = "Menú Principal";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="text-center my-4">
+    <h1 class="display-4 font-weight-bold" style="color: #FF6347;">Menú Appetite</h1>
+    <p class="lead text-muted">Explora nuestra selección de comidas preparadas con pasión.</p>
+</div>
+
+<div class="container mb-5">
+
+    @foreach (var group in Model)
+    {
+        // 1. Cabecera de la Categoría
+        <div class="row mt-5 mb-3">
+            <div class="col-12">
+                <h2 class="border-bottom pb-2" style="border-color: #FF6347 !important; color: #333;">@group.Key</h2>
+            </div>
+        </div>
+
+        // 2. Listado de Productos en la Categoría
+        <div class="row">
+            @foreach (var producto in group)
+            {
+                // Usamos un sistema de cuadrícula (col-md-4) para tres productos por fila en escritorio
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm border-0">
+
+                        <img src="https://via.placeholder.com/400x250.png?text=@producto.Nombre"
+                             class="card-img-top" alt="@producto.Nombre"
+                             style="object-fit: cover; height: 200px;">
+
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">@producto.Nombre</h5>
+                            <p class="card-text text-muted flex-grow-1">
+                                @(producto.Descripcion.Length > 70 ? producto.Descripcion.Substring(0, 70) + "..." : producto.Descripcion)
+                            </p>
+
+                            <div class="d-flex justify-content-between align-items-center mt-auto">
+                                <span class="h4 mb-0 text-success">
+                                    $@producto.Precio.ToString("N2")
+                                </span>
+                                <a href="#" class="btn btn-outline-primary btn-sm">Añadir</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+
+    @if (!Model.Any())
+    {
+        <div class="alert alert-warning text-center mt-5">
+            Actualmente no hay productos disponibles en el menú.
+        </div>
+    }
 </div>

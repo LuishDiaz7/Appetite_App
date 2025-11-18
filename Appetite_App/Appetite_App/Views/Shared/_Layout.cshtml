@@ -20,52 +20,37 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" href="#">🍔 Appetite</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Appetite</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
-                        @if (Context.Session.GetString("UsuarioRol") == "Administrador")
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link" asp-controller="Admin" asp-action="Index">Dashboard</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" asp-controller="Admin" asp-action="Productos">Productos</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" asp-controller="Admin" asp-action="Categorias">Categorías</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" asp-controller="Admin" asp-action="Usuarios">Usuarios</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" asp-controller="Admin" asp-action="Ordenes">Órdenes</a>
-                            </li>
-                        }
-                        else if (Context.Session.GetInt32("UsuarioId") != null)
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link" asp-controller="Cliente" asp-action="Index">Productos</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" asp-controller="Cliente" asp-action="Carrito">🛒 Carrito</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" asp-controller="Cliente" asp-action="MisOrdenes">Mis Órdenes</a>
-                            </li>
-                        }
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Menú</a>
+                        </li>
+                    </ul>
 
-                        @if (Context.Session.GetInt32("UsuarioId") != null)
+                    <ul class="navbar-nav">
+                        @if (!User.Identity.IsAuthenticated)
                         {
                             <li class="nav-item">
-                                <span class="nav-link">Hola, @Context.Session.GetString("UsuarioNombre")</span>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Login">Iniciar Sesión</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" asp-controller="Auth" asp-action="Logout">Cerrar Sesión</a>
+                                <a class="btn btn-sm btn-outline-success" asp-area="" asp-controller="Auth" asp-action="Registro">Regístrate</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Profile">Hola, @User.Identity.Name</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-danger" asp-area="" asp-controller="Auth" asp-action="Logout">Cerrar Sesión</a>
                             </li>
                         }
                     </ul>

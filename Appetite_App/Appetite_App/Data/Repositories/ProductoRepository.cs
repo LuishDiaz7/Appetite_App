@@ -1,12 +1,14 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Appetite_App.Data;
+﻿using Appetite_App.Data; 
 using Appetite_App.Models;
-using Appetite_App.Repositories;
+using Appetite_App.Repositories; 
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Appetite_App.Repositories
+namespace Appetite_App.Data.Repositories
 {
+    // Esta clase implementa la interfaz
     public class ProductoRepository : IProductoRepository
     {
         private readonly AppetiteContext _context;
@@ -15,23 +17,29 @@ namespace Appetite_App.Repositories
         {
             _context = context;
         }
-        public async Task<IEnumerable<Producto>> GetAllAsync()
-        {
-            // Solo trae los productos (GetAll genérico)
-            return await _context.Productos.ToListAsync();
-        }
 
-        // Aquí colocamos la lógica para incluir la categoría, que es lo que pide el Home Controller.
         public async Task<IEnumerable<Producto>> GetAllWithCategoryAsync()
         {
-            return await _context.Productos.Include(p => p.Categoria).ToListAsync();
+            // Usamos .Include() para cargar la Categoría junto con el Producto
+            return await _context.Productos
+                                 .Include(p => p.Categoria)
+                                 .ToListAsync();
+        }
+
+        // ... Implementaciones restantes de IProductoRepository ...
+
+        public async Task<IEnumerable<Producto>> GetAllAsync()
+        {
+            return await _context.Productos.ToListAsync();
         }
 
         public async Task<Producto?> GetByIdAsync(int id)
         {
+            // Implementación de búsqueda por ID
             return await _context.Productos.FindAsync(id);
         }
 
+        // ... Implementaciones para AddAsync, UpdateAsync, DeleteAsync ...
         public async Task AddAsync(Producto producto)
         {
             _context.Productos.Add(producto);

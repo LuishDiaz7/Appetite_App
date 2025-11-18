@@ -1,24 +1,32 @@
 ﻿@{
-    ViewData["Title"] = "Login";
+    ViewData["Title"] = "Iniciar Sesión";
 }
 
-<h2>Iniciar Sesión</h2>
-<div class="row">
-    <div class="col-md-4">
+<div class="row justify-content-center">
+    <div class="col-md-4 card p-4 shadow-sm">
+        <h2 class="card-title text-center mb-4">Iniciar Sesión</h2>
         <form asp-action="Login">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
+
+            <div class="form-group mb-3">
                 <label for="email" class="control-label">Email</label>
                 <input name="email" class="form-control" />
             </div>
-            <div class="form-group">
+
+            <div class="form-group mb-3">
                 <label for="password" class="control-label">Contraseña</label>
                 <input type="password" name="password" class="form-control" />
             </div>
-            <div class="form-group mt-3">
+
+            <div class="d-flex justify-content-between align-items-center mt-4">
                 <input type="submit" value="Ingresar" class="btn btn-primary" />
+
+                <a href="#" class="small text-muted">¿Olvidaste la contraseña?</a>
             </div>
         </form>
-        <p class="mt-2">¿No tienes cuenta? <a asp-action="Registro">Regístrate</a></p>
+
+        <p class="mt-3 text-center">
+            ¿No tienes cuenta? <a asp-action="Registro">Regístrate</a>
+        </p>
     </div>
 </div>

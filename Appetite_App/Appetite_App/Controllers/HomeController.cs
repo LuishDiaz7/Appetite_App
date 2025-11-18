@@ -1,32 +1,26 @@
-using System.Diagnostics;
-using Appetite_App.Models;
+using Appetite_App.Services; 
 using Microsoft.AspNetCore.Mvc;
 
-namespace Appetite_App.Controllers
+public class HomeController : Controller
 {
-    public class HomeController : Controller
+    private readonly IProductoService _productoService;
+
+    // Inyección de Dependencias
+    public HomeController(IProductoService productoService)
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
-
-        public IActionResult Index()
-        {
-            return View();
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+        _productoService = productoService;
     }
+
+    public async Task<IActionResult> Index()
+    {
+        var productos = await _productoService.GetAllProductosAsync();
+
+        // Agrupar los productos por nombre de Categoría
+        // Usamos el resultado de un GroupBy como modelo de la vista
+        var model = productos.GroupBy(p => p.Categoria.Nombre);
+
+        return View(model);
+    }
+
+    // ... Otros métodos del controlador ...
 }

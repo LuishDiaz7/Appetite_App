@@ -3,6 +3,7 @@ using Appetite_App.Repositories;
 using Appetite_App.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
+using Appetite_App.Data.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,15 +26,18 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
     });
 
+
 // Registrar repositorios
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
-builder.Services.AddScoped<IProductoRepository, ProductoRepository>();
 builder.Services.AddScoped<IOrdenRepository, OrdenRepository>();
 builder.Services.AddScoped<ICategoriaRepository, CategoriaRepository>();
+builder.Services.AddScoped<IProductoRepository, Appetite_App.Data.Repositories.ProductoRepository>();
 
 // Registrar servicios
 builder.Services.AddScoped<UserManagement>();
 builder.Services.AddScoped<OrdenService>();
+builder.Services.AddScoped<IProductoService, ProductoService>();
+
 
 // Configurar sesión
 builder.Services.AddDistributedMemoryCache();
