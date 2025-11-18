@@ -1,0 +1,64 @@
+﻿@model Appetite_App.Models.PreOrden
+@{
+    ViewData["Title"] = "Detalle de Orden";
+}
+
+<h2 class="mb-4">📋 Detalle de Orden #@Model.IdOrden</h2>
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card mb-3">
+            <div class="card-header bg-danger text-white">
+                <strong>Productos</strong>
+            </div>
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Producto</th>
+                            <th>Cantidad</th>
+                            <th>Extras</th>
+                            <th>Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var detalle in Model.Detalles)
+                        {
+                            <tr>
+                                <td>@detalle.Producto.Nombre</td>
+                                <td>@detalle.Cantidad</td>
+                                <td>
+                                    @if (!string.IsNullOrEmpty(detalle.DecoradoresAplicados))
+                                    {
+                                        <small class="text-muted">@detalle.DecoradoresAplicados</small>
+                                    }
+                                    else
+                                    {
+                                        <small class="text-muted">Sin extras</small>
+                                    }
+                                </td>
+                                <td>$@detalle.Subtotal.ToString("N0")</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header bg-danger text-white">
+                <strong>Información de la Orden</strong>
+            </div>
+            <div class="card-body">
+                <p><strong>Estado:</strong> <span class="badge bg-info">@Model.Estado</span></p>
+                <p><strong>Fecha:</strong> @Model.Fecha.ToString("dd/MM/yyyy HH:mm")</p>
+                <p><strong>Dirección:</strong><br>@Model.Direccion</p>
+                <hr>
+                <h5 class="text-danger">Total: $@Model.Total.ToString("N0")</h5>
+                <a asp-action="MisOrdenes" class="btn btn-outline-danger btn-sm w-100 mt-3">Volver a Mis Órdenes</a>
+            </div>
+        </div>
+    </div>
+</div>

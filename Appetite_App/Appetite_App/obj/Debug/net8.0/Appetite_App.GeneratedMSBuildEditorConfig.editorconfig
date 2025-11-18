@@ -1,0 +1,109 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Appetite_App
+build_property.RootNamespace = Appetite_App
+build_property.ProjectDir = C:\Users\luish\OneDrive\Documents\Arquitectura de Software\Appetite_Project\Appetite_App\Appetite_App\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\luish\OneDrive\Documents\Arquitectura de Software\Appetite_Project\Appetite_App\Appetite_App
+build_property._RazorSourceGeneratorDebug = 
+build_property.EffectiveAnalysisLevelStyle = 8.0
+build_property.EnableCodeStyleSeverity = 
+
+[C:/Users/luish/OneDrive/Documents/Arquitectura de Software/Appetite_Project/Appetite_App/Appetite_App/Views/Admin/Categorias.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ2F0ZWdvcmlhcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/luish/OneDrive/Documents/Arquitectura de Software/Appetite_Project/Appetite_App/Appetite_App/Views/Admin/CrearCategoria.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ3JlYXJDYXRlZ29yaWEuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/luish/OneDrive/Documents/Arquitectura de Software/Appetite_Project/Appetite_App/Appetite_App/Views/Admin/CrearProducto.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ3JlYXJQcm9kdWN0by5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/luish/OneDrive/Documents/Arquitectura de Software/Appetite_Project/Appetite_App/Appetite_App/Views/Admin/CrearUsuario.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ3JlYXJVc3VhcmlvLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/luish/OneDrive/Documents/Arquitectura de Software/Appetite_Project/Appetite_App/Appetite_App/Views/Admin/EditarProducto.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRWRpdGFyUHJvZHVjdG8uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/luish/OneDrive/Documents/Arquitectura de Software/Appetite_Project/Appetite_App/Appetite_App/Views/Admin/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/luish/OneDrive/Documents/Arquitectura de Software/Appetite_Project/Appetite_App/Appetite_App/Views/Admin/Ordenes.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cT3JkZW5lcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/luish/OneDrive/Documents/Arquitectura de Software/Appetite_Project/Appetite_App/Appetite_App/Views/Admin/Productos.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUHJvZHVjdG9zLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/luish/OneDrive/Documents/Arquitectura de Software/Appetite_Project/Appetite_App/Appetite_App/Views/Admin/Usuarios.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVXN1YXJpb3MuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/luish/OneDrive/Documents/Arquitectura de Software/Appetite_Project/Appetite_App/Appetite_App/Views/Auth/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/luish/OneDrive/Documents/Arquitectura de Software/Appetite_Project/Appetite_App/Appetite_App/Views/Auth/Registro.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxSZWdpc3Ryby5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/luish/OneDrive/Documents/Arquitectura de Software/Appetite_Project/Appetite_App/Appetite_App/Views/Cliente/Carrito.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50ZVxDYXJyaXRvLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/luish/OneDrive/Documents/Arquitectura de Software/Appetite_Project/Appetite_App/Appetite_App/Views/Cliente/DetalleOrden.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50ZVxEZXRhbGxlT3JkZW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/luish/OneDrive/Documents/Arquitectura de Software/Appetite_Project/Appetite_App/Appetite_App/Views/Cliente/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50ZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/luish/OneDrive/Documents/Arquitectura de Software/Appetite_Project/Appetite_App/Appetite_App/Views/Cliente/MisOrdenes.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50ZVxNaXNPcmRlbmVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/luish/OneDrive/Documents/Arquitectura de Software/Appetite_Project/Appetite_App/Appetite_App/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/luish/OneDrive/Documents/Arquitectura de Software/Appetite_Project/Appetite_App/Appetite_App/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/luish/OneDrive/Documents/Arquitectura de Software/Appetite_Project/Appetite_App/Appetite_App/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/luish/OneDrive/Documents/Arquitectura de Software/Appetite_Project/Appetite_App/Appetite_App/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/luish/OneDrive/Documents/Arquitectura de Software/Appetite_Project/Appetite_App/Appetite_App/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/luish/OneDrive/Documents/Arquitectura de Software/Appetite_Project/Appetite_App/Appetite_App/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/luish/OneDrive/Documents/Arquitectura de Software/Appetite_Project/Appetite_App/Appetite_App/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-tvlre9r8ad

@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Appetite_App.Models.Producto>
+
+@{
+    ViewData["Title"] = "Menú Principal";
+}
+
+<h1>Catálogo Appetite</h1>
+<p>Selecciona un producto y sus extras. (Patrón Decorator)</p>
+
+<div class="row">
+    @foreach (var producto in Model)
+    {
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">@producto.Nombre</h5>
+                    <p class="card-text">@producto.Descripcion</p>
+                    <p class="card-text"><strong>Precio Base: $@producto.Precio</strong></p>
+                    <form asp-action="AddToCart" method="post">
+                        <input type="hidden" name="idProducto" value="@producto.IdProducto" />
+                        <div class="form-group">
+                            <label>Cantidad:</label>
+                            <input type="number" name="cantidad" value="1" min="1" class="form-control" required />
+                        </div>
+                        @if (producto.IdCategoria == 1) // Hamburguesas
+                        {
+                            <h6 class="mt-2">Extras (Decorator):</h6>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="quesoExtra" value="true" id="queso_@producto.IdProducto">
+                                <label class="form-check-label" for="queso_@producto.IdProducto">Queso Extra ($2.00)</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="carneDoble" value="true" id="carne_@producto.IdProducto">
+                                <label class="form-check-label" for="carne_@producto.IdProducto">Carne Doble ($5.00)</label>
+                            </div>
+                        }
+                        @if (producto.IdCategoria == 2) // Bebidas
+                        {
+                            <div class="form-check mt-2">
+                                <input class="form-check-input" type="checkbox" name="bebidaGrande" value="true" id="bebida_@producto.IdProducto">
+                                <label class="form-check-label" for="bebida_@producto.IdProducto">Tamaño Grande ($1.50)</label>
+                            </div>
+                        }
+                        <button type="submit" class="btn btn-primary btn-sm mt-3">Añadir al Carrito</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<p class="mt-4"><a asp-action="Carrito" class="btn btn-success">Ver Carrito</a></p>

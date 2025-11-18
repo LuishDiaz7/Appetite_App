@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35931.197
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Appetite_App", "Appetite_App\Appetite_App.csproj", "{720307DC-8211-48B1-BB71-76278839CCEC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{720307DC-8211-48B1-BB71-76278839CCEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{720307DC-8211-48B1-BB71-76278839CCEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{720307DC-8211-48B1-BB71-76278839CCEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{720307DC-8211-48B1-BB71-76278839CCEC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {106F5448-CECB-46AF-94A0-8BDC39E16C94}
+	EndGlobalSection
+EndGlobal

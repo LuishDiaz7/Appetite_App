@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Appetite_App.Models.PreOrden>
+@{
+    ViewData["Title"] = "Mis Órdenes";
+}
+
+<h2 class="mb-4">📋 Mis Órdenes</h2>
+
+@if (Model != null && Model.Any())
+{
+    <div class="row">
+        @foreach (var orden in Model)
+        {
+            <div class="col-md-6 mb-3">
+                <div class="card">
+                    <div class="card-header bg-danger text-white">
+                        <strong>Orden #@orden.IdOrden</strong>
+                        <span class="badge bg-light text-dark float-end">@orden.Estado</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="mb-1"><strong>Fecha:</strong> @orden.Fecha.ToString("dd/MM/yyyy HH:mm")</p>
+                        <p class="mb-1"><strong>Total:</strong> $@orden.Total.ToString("N0")</p>
+                        <p class="mb-1"><strong>Dirección:</strong> @orden.Direccion</p>
+                        <p class="mb-3"><strong>Productos:</strong> @orden.Detalles.Count item(s)</p>
+                        <a asp-action="DetalleOrden" asp-route-id="@orden.IdOrden" class="btn btn-sm btn-outline-danger">Ver Detalle</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
+else
+{
+    <div class="alert alert-info">
+        <p>No tienes órdenes registradas</p>
+    </div>
+}

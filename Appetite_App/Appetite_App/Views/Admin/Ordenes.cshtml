@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Appetite_App.Models.PreOrden>
+@{
+    ViewData["Title"] = "Gestión de Órdenes";
+}
+
+<h2 class="mb-4">📋 Todas las Órdenes (Patrón Observer)</h2>
+
+<div class="alert alert-info">
+    <strong>Patrón Observer:</strong> Cuando se crea o confirma una orden, se notifica automáticamente a:
+    <ul class="mb-0">
+        <li>Inventario (reduce/restaura stock)</li>
+        <li>Auditoría (registra eventos)</li>
+        <li>Notificaciones (envía mensajes)</li>
+    </ul>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Cliente</th>
+                    <th>Fecha</th>
+                    <th>Total</th>
+                    <th>Estado</th>
+                    <th>Productos</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var orden in Model)
+                {
+                    <tr>
+                        <td>@orden.IdOrden</td>
+                        <td>@orden.Usuario?.Nombre</td>
+                        <td>@orden.Fecha.ToString("dd/MM/yyyy HH:mm")</td>
+                        <td>$@orden.Total.ToString("N0")</td>
+                        <td><span class="badge bg-info">@orden.Estado</span></td>
+                        <td>@orden.Detalles.Count items</td>
+                        <td>
+                            <a asp-action="DetalleOrden" asp-route-id="@orden.IdOrden" class="btn btn-sm btn-primary">Ver Detalle</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

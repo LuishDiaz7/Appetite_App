@@ -1,0 +1,51 @@
+﻿@{
+    ViewData["Title"] = "Carrito de Compras";
+}
+
+<h2>Tu Carrito (Decorator Applied)</h2>
+
+@if (Model.Count == 0)
+{
+    <p>Tu carrito está vacío.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Producto</th>
+                <th>Extras/Decoradores</th>
+                <th>Precio Unitario Final</th>
+                <th>Cantidad</th>
+                <th>Subtotal</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (dynamic item in Model)
+            {
+                <tr>
+                    <td>@item.ProductoBase</td>
+                    <td>@item.Descripcion.Replace(@item.ProductoBase, "").TrimStart(',')</td>
+                    <td>$@item.PrecioUnitario.ToString("N2")</td>
+                    <td>@item.Cantidad</td>
+                    <td>$@item.Subtotal.ToString("N2")</td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="4" class="text-right"><strong>TOTAL:</strong></td>
+                <td><strong>$@ViewBag.Total.ToString("N2")</strong></td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <h3>Finalizar Pedido (Patrón Builder)</h3>
+    <form asp-action="Checkout" method="post">
+        <div class="form-group">
+            <label for="direccion">Dirección de Entrega:</label>
+            <input name="direccion" class="form-control" required placeholder="Calle, Número, Ciudad" />
+        </div>
+        <button type="submit" class="btn btn-lg btn-success mt-3">Confirmar y Pagar (Checkout)</button>
+    </form>
+}

@@ -1,0 +1,39 @@
+﻿@{
+    ViewData["Title"] = "Panel de Administración";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Bienvenido, Administrador</h1>
+    <p>Utiliza los enlaces para gestionar el sistema.</p>
+</div>
+
+<div class="row mt-5">
+    <div class="col-md-4">
+        <div class="card bg-info text-white">
+            <div class="card-body">
+                <h5 class="card-title">Gestión de Productos</h5>
+                <p class="card-text">Administrar menú, precios y stock.</p>
+                <a asp-action="Productos" class="btn btn-light">Ir a Productos</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card bg-warning text-dark">
+            <div class="card-body">
+                <h5 class="card-title">Gestión de Órdenes</h5>
+                <p class="card-text">Revisar pedidos y cambiar estados.</p>
+                <a asp-action="Ordenes" class="btn btn-light">Ir a Órdenes</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card bg-success text-white">
+            <div class="card-body">
+                <h5 class="card-title">Gestión de Usuarios</h5>
+                <p class="card-text">Ver y administrar cuentas de clientes.</p>
+                <a asp-action="Usuarios" class="btn btn-light">Ir a Usuarios</a>
+            </div>
+        </div>
+    </div>
+</div>
+
