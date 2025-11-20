@@ -1,25 +1,24 @@
 using Appetite_App.Services; 
 using Microsoft.AspNetCore.Mvc;
+using Appetite_App.Repositories;
 
 public class HomeController : Controller
 {
     private readonly IProductoService _productoService;
+    private readonly ICategoriaRepository _categoriaRepository;
 
     // Inyección de Dependencias
-    public HomeController(IProductoService productoService)
+    public HomeController(IProductoService productoService, ICategoriaRepository categoriaRepository)
     {
         _productoService = productoService;
+        _categoriaRepository = categoriaRepository;
     }
 
     public async Task<IActionResult> Index()
     {
-        var productos = await _productoService.GetAllProductosAsync();
+        var categorias = await _categoriaRepository.GetAllWithProductsAsync();
 
-        // Agrupar los productos por nombre de Categoría
-        // Usamos el resultado de un GroupBy como modelo de la vista
-        var model = productos.GroupBy(p => p.Categoria.Nombre);
-
-        return View(model);
+        return View(categorias);
     }
 
     // ... Otros métodos del controlador ...

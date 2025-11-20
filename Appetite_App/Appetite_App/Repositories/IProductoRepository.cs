@@ -11,6 +11,7 @@ namespace Appetite_App.Repositories
         Task AddAsync(Producto producto);
         Task UpdateAsync(Producto producto);
         Task DeleteAsync(int id);
+        Task<IEnumerable<Producto>> GetByCategoryIdAsync(int categoryId);
 
     }
 }

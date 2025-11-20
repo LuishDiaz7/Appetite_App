@@ -1,9 +1,14 @@
+using Microsoft.Extensions.Logging; 
+using System; 
+using System.Threading.Tasks;
 using Appetite_App.Data;
 using Appetite_App.Repositories;
 using Appetite_App.Services;
+using Appetite_App.Models;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using Appetite_App.Data.Repositories;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,16 +22,6 @@ builder.Services.AddDbContext<AppetiteContext>(options =>
 // Registrar SINGLETON 
 builder.Services.AddSingleton<DatabaseConnectionManager>();
 
-// Configurar Autenticación para usar Cookies
-builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-    .AddCookie(options =>
-    {
-        options.LoginPath = "/Auth/Login";
-        options.AccessDeniedPath = "/Auth/AccessDenied";
-        options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
-    });
-
-
 // Registrar repositorios
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 builder.Services.AddScoped<IOrdenRepository, OrdenRepository>();
@@ -38,6 +33,20 @@ builder.Services.AddScoped<UserManagement>();
 builder.Services.AddScoped<OrdenService>();
 builder.Services.AddScoped<IProductoService, ProductoService>();
 
+builder.Services.AddIdentity<Usuario, IdentityRole<int>>(options =>
+{
+    // Requisitos de Sign-in
+    options.SignIn.RequireConfirmedAccount = false;
+
+    // Requisitos de Contraseña TEMPORALMENTE RELAJADOS para asegurar la creación del usuario Admin
+    options.Password.RequireDigit = false;
+    options.Password.RequireLowercase = false;
+    options.Password.RequireNonAlphanumeric = false;
+    options.Password.RequireUppercase = false;
+    options.Password.RequiredLength = 6; // Longitud mínima de 6 caracteres
+})
+    .AddEntityFrameworkStores<AppetiteContext>()
+    .AddDefaultTokenProviders();
 
 // Configurar sesión
 builder.Services.AddDistributedMemoryCache();
@@ -56,14 +65,13 @@ using (var scope = app.Services.CreateScope())
     var services = scope.ServiceProvider;
     try
     {
-        var context = services.GetRequiredService<AppetiteContext>();
-        // ?? CAMBIO CLAVE: Usar 'await' para ejecutar el método asíncrono
-        await DbInitializer.Initialize(context);
+        // Se llama al inicializador para forzar el borrado y la recreación
+        await DbInitializer.Initialize(services);
     }
     catch (Exception ex)
     {
         var logger = services.GetRequiredService<ILogger<Program>>();
-        logger.LogError(ex, "Error al inicializar la base de datos.");
+        logger.LogError(ex, "Ocurrió un error al inicializar la base de datos.");
     }
 }
 
@@ -87,6 +95,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Auth}/{action=Login}/{id?}");
+    pattern: "{controller=Home}/{action=Index}/{id?}"); 
 
 app.Run();

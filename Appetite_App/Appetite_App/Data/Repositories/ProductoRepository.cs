@@ -61,5 +61,14 @@ namespace Appetite_App.Data.Repositories
                 await _context.SaveChangesAsync();
             }
         }
+
+        public async Task<IEnumerable<Producto>> GetByCategoryIdAsync(int categoryId)
+        {
+            return await _context.Productos
+                                 // CAMBIO: Usamos IdCategoria, no CategoriaId
+                                 .Where(p => p.IdCategoria == categoryId)
+                                 .Include(p => p.Categoria)
+                                 .ToListAsync();
+        }
     }
 }

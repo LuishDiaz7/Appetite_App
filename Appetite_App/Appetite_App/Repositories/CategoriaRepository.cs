@@ -46,5 +46,13 @@ namespace Appetite_App.Repositories
                 await _context.SaveChangesAsync();
             }
         }
+
+        public async Task<IEnumerable<Categoria>> GetAllWithProductsAsync()
+        {
+            return await _context.Categorias
+                                 .Include(c => c.Productos)
+                                 .ToListAsync();
+        }
+
     }
 }

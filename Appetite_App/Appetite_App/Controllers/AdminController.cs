@@ -80,6 +80,22 @@ public class AdminController : Controller
         return View("EditarProducto", producto);
     }
 
+    // Página principal de la administración (Ajustamos para el botón 'Panel Admin')
+    public IActionResult Dashboard()
+    {
+        // Redirigir al listado de productos, que es el punto de inicio más útil para el admin.
+        return RedirectToAction(nameof(Productos));
+    }
+
+    // ... (resto de Index(), Productos() )
+
+    // NUEVA ACCIÓN: Crea un endpoint limpio para la creación de productos (Resuelve el 404)
+    public IActionResult CrearProducto()
+    {
+        // Redirige a EditarProducto, pasándole 0 como ID, lo que activa la lógica de "nuevo producto"
+        return RedirectToAction(nameof(EditarProducto), new { id = 0 });
+    }
+
     // ---------------------------------------------
     // GESTIÓN DE USUARIOS
     // ---------------------------------------------

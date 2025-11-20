@@ -1,5 +1,6 @@
 ﻿using Appetite_App.Models;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Appetite_App.Models
 {
@@ -17,9 +18,11 @@ namespace Appetite_App.Models
         public int IdCategoria { get; set; }
 
         // Propiedad de navegación
+        [ForeignKey("IdCategoria")]
         public Categoria? Categoria { get; set; }
 
         // Propiedad de Navegación: Colección de detalles de órdenes donde aparece este producto
         public ICollection<DetalleOrden> DetallesOrden { get; set; } = new List<DetalleOrden>();
+
     }
 }

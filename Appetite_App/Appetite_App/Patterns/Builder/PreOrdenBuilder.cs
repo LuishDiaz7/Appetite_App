@@ -21,7 +21,7 @@ namespace Appetite_App.Patterns.Builder
 
         public void SetUsuario(Usuario usuario)
         {
-            this._preOrden.IdUsuario = usuario.IdUsuario;
+            this._preOrden.IdUsuario = usuario.Id;
             this._preOrden.Usuario = usuario;
         }
 

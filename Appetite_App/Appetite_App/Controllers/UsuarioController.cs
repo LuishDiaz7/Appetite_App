@@ -80,7 +80,7 @@ namespace Appetite.Controllers
             {
                 if (string.IsNullOrEmpty(usuario.PasswordHash))
                 {
-                    var usuarioActual = await _usuarioRepository.GetByIdAsync(usuario.IdUsuario);
+                    var usuarioActual = await _usuarioRepository.GetByIdAsync(usuario.Id);
                     usuario.PasswordHash = usuarioActual.PasswordHash;
                 }
                 else
