@@ -14,6 +14,8 @@ namespace Appetite_App.Models
         public int Stock { get; set; }
         public bool Activo { get; set; } = true;
 
+        public string? ImagenUrl { get; set; }
+
         // Clave Foránea
         public int IdCategoria { get; set; }
 
