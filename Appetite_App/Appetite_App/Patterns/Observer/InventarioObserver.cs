@@ -1,33 +1,34 @@
 ﻿using Appetite_App.Models;
-using Appetite_App.Repositories; 
+using Microsoft.Extensions.Logging;
 
 namespace Appetite_App.Patterns.Observer
 {
-    // InventarioObserver en el diagrama
+
     public class InventarioObserver : IOrderObserver
     {
-        // En un prototipo real, inyectaríamos el IProductoRepository aquí.
-        // private readonly IProductoRepository _productoRepository;
+        private readonly ILogger<InventarioObserver> _logger;
 
-        // public InventarioObserver(IProductoRepository repo) { _productoRepository = repo; }
-
-        public void OnOrderCreated(PreOrden orden)
+        // Se inyectan las dependencias necesarias, como un servicio de inventario o un logger
+        public InventarioObserver(ILogger<InventarioObserver> logger)
         {
-            // Lógica: Reducir el stock de productos
-            Console.WriteLine($"[INVENTARIO]: Orden {orden.IdOrden} creada. Descontando stock...");
-            // _productoRepository.DecrementStock(orden.Detalles);
+            _logger = logger;
         }
 
-        public void OnOrderPrepared(PreOrden orden)
+        public void Update(PreOrden order, string eventType)
         {
-            // No requiere acción.
-        }
+            if (eventType == "ORDER_CREATED")
+            {
+                // Lógica real: Descontar productos del inventario
+                _logger.LogInformation($"[INVENTARIO] Descontando inventario para Orden #{order.IdOrden}.");
 
-        public void OnOrderCanceled(PreOrden orden)
-        {
-            // Lógica: Devolver el stock de productos
-            Console.WriteLine($"[INVENTARIO]: Orden {orden.IdOrden} cancelada. Reponiendo stock...");
-            // _productoRepository.IncrementStock(orden.Detalles);
+                foreach (var detalle in order.Detalles)
+                {
+                    // Simulación del descuento
+                    _logger.LogInformation($"- Descontado {detalle.Cantidad} x {detalle.Producto.Nombre}");
+                }
+
+                // Si el inventario falla, podría notificar al sujeto de vuelta o generar una excepción.
+            }
         }
     }
 }

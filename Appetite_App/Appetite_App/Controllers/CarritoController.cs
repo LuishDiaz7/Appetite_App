@@ -106,4 +106,30 @@ public class CarritoController : Controller
         carrito.Add(item);
         HttpContext.Session.SetString(CarritoSessionKey, JsonConvert.SerializeObject(carrito));
     }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public IActionResult RemoveFromCart(int id)
+    {
+        var carrito = GetCarritoFromSession();
+        var itemToRemove = carrito.FirstOrDefault(i => i.IdProducto == id);
+
+        if (itemToRemove != null)
+        {
+            carrito.Remove(itemToRemove);
+
+            TempData["Success"] = $"Producto '{itemToRemove.NombreProducto}' eliminado del carrito.";
+        }
+        else
+        {
+            TempData["Error"] = "El producto no se encontró en el carrito.";
+        }
+
+        // 3. Guardar la lista de carrito actualizada en la sesión usando tu método SetString/JsonConvert
+        // Esto soluciona el error de SetObject.
+        HttpContext.Session.SetString(CarritoSessionKey, JsonConvert.SerializeObject(carrito));
+
+        // Redirigir de vuelta a la vista del carrito
+        return RedirectToAction("Index");
+    }
 }

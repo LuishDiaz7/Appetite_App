@@ -1,59 +1,60 @@
 ﻿using Appetite_App.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Appetite_App.Patterns.Builder
 {
-    // PreOrdenBuilder en el diagrama
     public class PreOrdenBuilder : IPedidoBuilder
     {
         private PreOrden _preOrden;
 
         public PreOrdenBuilder()
         {
-            this.Reset();
+            Reset();
         }
 
         public void Reset()
         {
-            this._preOrden = new PreOrden();
-            this._preOrden.Detalles = new List<DetalleOrden>();
-            this._preOrden.Estado = "Pendiente";
+            _preOrden = new PreOrden
+            {
+                Detalles = new List<DetalleOrden>(),
+                Fecha = DateTime.Now,
+                Estado = "Pendiente"
+            };
         }
 
         public void SetUsuario(Usuario usuario)
         {
-            this._preOrden.IdUsuario = usuario.Id;
-            this._preOrden.Usuario = usuario;
+            _preOrden.Usuario = usuario;
+            _preOrden.IdUsuario = usuario.Id; // Asume que Usuario tiene una propiedad Id
         }
 
         public void SetDireccion(string direccion)
         {
-            this._preOrden.Direccion = direccion;
+            _preOrden.Direccion = direccion;
         }
 
         public void SetFecha(DateTime fecha)
         {
-            this._preOrden.Fecha = fecha;
+            _preOrden.Fecha = fecha;
         }
 
         public void AddDetalle(DetalleOrden detalle)
         {
-            this._preOrden.Detalles.Add(detalle);
+            _preOrden.Detalles.Add(detalle);
         }
 
         public void CalcularTotal()
         {
-            decimal total = 0;
-            foreach (var detalle in this._preOrden.Detalles)
-            {
-                total += detalle.Subtotal;
-            }
-            this._preOrden.Total = total;
+            // Suma los subtotales de los detalles de orden
+            _preOrden.Total = _preOrden.Detalles.Sum(d => d.Subtotal);
         }
 
         public PreOrden GetPreOrden()
         {
-            PreOrden resultado = this._preOrden;
-            this.Reset(); // Resetear para construir una nueva orden
+            PreOrden resultado = _preOrden;
+            Reset();
             return resultado;
         }
     }

@@ -1,15 +1,15 @@
 ﻿using Appetite_App.Models;
+using System;
 
 namespace Appetite_App.Patterns.Builder
 {
-    // PedidoBuilder en el diagrama
     public interface IPedidoBuilder
     {
         void SetUsuario(Usuario usuario);
         void SetDireccion(string direccion);
         void SetFecha(DateTime fecha);
-        void AddDetalle(DetalleOrden detalle);
+        void AddDetalle(DetalleOrden detalle); // Usamos DetalleOrden
         void CalcularTotal();
-        PreOrden GetPreOrden();
+        PreOrden GetPreOrden(); // Devuelve PreOrden
     }
 }

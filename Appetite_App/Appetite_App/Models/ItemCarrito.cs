@@ -21,15 +21,14 @@ namespace Appetite_App.Models
         // Precio unitario base (antes de decoradores)
         public decimal PrecioBaseUnitario { get; set; }
 
-        // Precio total (base + decoradores) * cantidad
+        // Precio total del ítem (base + decoradores) * cantidad
         public decimal PrecioTotal { get; set; }
 
         // Lista de los decoradores aplicados para mostrar en el carrito (ej. ["Queso Extra", "Carne Doble"])
+        // Se inicializa para garantizar que nunca sea null, evitando el error.
         public List<string> DescripcionExtras { get; set; } = new List<string>();
 
         // Descripcion completa generada por el último decorador (ej: Clásica, Carne Doble, Queso Extra)
         public string DescripcionCompleta { get; set; }
-
-        public List<string> Extras { get; set; }
     }
 }

@@ -43,16 +43,16 @@
 
                 @if (Model.IdCategoria == 1) 
                 {
-                    <h4 class="mt-4 text-primary">Opciones (Decorator):</h4>
+                    <h4 class="mt-4 text-primary">Opciones:</h4>
                     <p class="text-info">Selecciona los extras que modifican el precio final.</p>
 
                     <div class="form-check fs-5">
                         <input class="form-check-input" type="checkbox" name="quesoExtra" value="true" id="queso_@Model.IdProducto">
-                        <label class="form-check-label" for="queso_@Model.IdProducto">Queso Extra (+$2.00)</label>
+                        <label class="form-check-label" for="queso_@Model.IdProducto">Queso Extra (+$4000)</label>
                     </div>
                     <div class="form-check fs-5">
                         <input class="form-check-input" type="checkbox" name="carneDoble" value="true" id="carne_@Model.IdProducto">
-                        <label class="form-check-label" for="carne_@Model.IdProducto">Carne Doble (+$5.00)</label>
+                        <label class="form-check-label" for="carne_@Model.IdProducto">Carne Doble (+$8000)</label>
                     </div>
                 }
                 else if (Model.IdCategoria == 2) 

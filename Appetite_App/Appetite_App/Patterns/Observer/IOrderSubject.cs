@@ -2,11 +2,14 @@
 
 namespace Appetite_App.Patterns.Observer
 {
-    // Parte de OrdenSubject en el diagrama
+    // La interfaz Sujeto (Subject) define las operaciones para manejar a los observadores.
     public interface IOrderSubject
     {
+        // Métodos para manejar a los observadores
         void Attach(IOrderObserver observer);
         void Detach(IOrderObserver observer);
-        void Notify(PreOrden orden, string eventType);
+
+        // Método de notificación, que debe ser llamado por el OrdenService
+        void Notify(PreOrden order, string eventType);
     }
 }

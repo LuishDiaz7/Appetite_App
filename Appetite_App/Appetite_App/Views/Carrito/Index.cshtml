@@ -7,7 +7,7 @@
 
 <div class="container mt-5">
     <h1 class="display-4 mb-4" style="color: #FF6347;">Tu Pedido</h1>
-    <p class="lead text-muted">Revisa tu selección y confirma la orden. (Patrón Decorator aplicado)</p>
+    <p class="lead text-muted">Revisa tu selección y confirma la orden.</p>
 
     @if (Model == null || !Model.Any())
     {
@@ -29,15 +29,14 @@
                         <div class="card-body">
                             <div class="row align-items-center">
                                 <div class="col-8">
-                                    <!-- Nombre del Producto Base -->
-                                    <h5 class="card-title text-dark">@item.NombreProducto (@item.Cantidad x)</h5>
-
-                                    <!-- Detalles del Decorator (Extras) -->
-                                    @if (item.Extras.Any())
+                                    
+                                    <h5 class="card-title text-dark">@item.DescripcionCompleta (@item.Cantidad x)</h5>
+                                   
+                                    @if (item.DescripcionExtras.Any())
                                     {
                                         <small class="text-info font-weight-bold">Extras:</small>
                                         <ul class="list-unstyled ml-3">
-                                            @foreach (var extra in item.Extras)
+                                            @foreach (var extra in item.DescripcionExtras)
                                             {
                                                 <li><small class="text-muted">@extra</small></li>
                                             }
@@ -48,9 +47,10 @@
                                     <p class="h5 text-success mb-0">
                                         $@subtotalItem.ToString("N2")
                                     </p>
-                                    <!-- Botón para eliminar (requiere acción en el controlador) -->
+
                                     <form asp-controller="Carrito" asp-action="RemoveFromCart" method="post" style="display:inline;">
-                                        <input type="hidden" name="itemId" value="@item.Id" />
+                                        @Html.AntiForgeryToken() 
+                                        <input type="hidden" name="id" value="@item.IdProducto" /> 
                                         <button type="submit" class="btn btn-sm btn-outline-danger mt-2">Eliminar</button>
                                     </form>
                                 </div>

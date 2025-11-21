@@ -1,14 +1,16 @@
+using Appetite_App.Data;
+using Appetite_App.Data.Repositories;
+using Appetite_App.Models;
+using Appetite_App.Patterns.Builder;
+using Appetite_App.Patterns.Observer;
+using Appetite_App.Repositories;
+using Appetite_App.Services;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Threading.Tasks;
-using Appetite_App.Data;
-using Appetite_App.Repositories;
-using Appetite_App.Services;
-using Appetite_App.Models;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.EntityFrameworkCore;
-using Appetite_App.Data.Repositories;
-using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -30,6 +32,13 @@ builder.Services.AddScoped<IProductoRepository, Appetite_App.Data.Repositories.P
 // Registrar servicios
 builder.Services.AddScoped<OrdenService>();
 builder.Services.AddScoped<IProductoService, ProductoService>();
+
+// Builder Pattern
+builder.Services.AddScoped<Director>();
+
+// Observer Pattern
+builder.Services.AddScoped<IOrderSubject, OrderSubject>();
+builder.Services.AddScoped<IOrderObserver, InventarioObserver>();
 
 // --- CONFIGURACIÓN DE ASP.NET CORE IDENTITY ---
 
