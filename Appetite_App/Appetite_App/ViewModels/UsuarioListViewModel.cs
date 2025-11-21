@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic; 
 
 namespace Appetite_App.ViewModels
 {
-    // ViewModel específico para la lista de usuarios en la vista de administración
     public class UsuarioListViewModel
     {
         public int Id { get; set; }
@@ -13,8 +13,9 @@ namespace Appetite_App.ViewModels
         [Display(Name = "Correo Electrónico")]
         public string Email { get; set; } = string.Empty;
 
-        // Propiedad que antes estaba en el modelo, ahora la calculamos.
-        [Display(Name = "Rol")]
-        public string Rol { get; set; } = string.Empty;
+        [Display(Name = "Roles")] 
+        public List<string> Roles { get; set; } = new List<string>();
+
+        public string RolPrincipal => Roles != null && Roles.Any() ? Roles.First() : "N/A";
     }
 }

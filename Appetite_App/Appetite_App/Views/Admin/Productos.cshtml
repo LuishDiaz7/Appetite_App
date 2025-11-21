@@ -10,7 +10,8 @@
         </a>
     </div>
     <h2>🍔 Gestión de Productos</h2>
-    <a asp-action="CrearProducto" class="btn btn-danger">+ Nuevo Producto</a>
+
+    <a asp-action="Crear" class="btn btn-danger">+ Nuevo Producto</a>
 </div>
 
 <div class="card">
@@ -38,8 +39,9 @@
                         <td>@producto.Stock</td>
                         <td>@producto.Categoria?.Nombre</td>
                         <td>
-                            <a asp-action="EditarProducto" asp-route-id="@producto.IdProducto" class="btn btn-sm btn-warning">Editar</a>
-                            <form method="post" asp-action="EliminarProducto" asp-route-id="@producto.IdProducto" style="display:inline;">
+                            <a asp-action="Editar" asp-route-id="@producto.IdProducto" class="btn btn-sm btn-warning">Editar</a>
+
+                            <form method="post" asp-action="Eliminar" asp-route-id="@producto.IdProducto" style="display:inline;">
                                 <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('¿Eliminar este producto?')">Eliminar</button>
                             </form>
                         </td>

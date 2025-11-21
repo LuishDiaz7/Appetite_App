@@ -1,0 +1,86 @@
+﻿@model List<Appetite_App.Models.ItemCarrito>
+
+@{
+    ViewData["Title"] = "Tu Carrito de Compras";
+    decimal total = 0;
+}
+
+<div class="container mt-5">
+    <h1 class="display-4 mb-4" style="color: #FF6347;">Tu Pedido</h1>
+    <p class="lead text-muted">Revisa tu selección y confirma la orden. (Patrón Decorator aplicado)</p>
+
+    @if (Model == null || !Model.Any())
+    {
+        <div class="alert alert-warning text-center">
+            <h4 class="alert-heading">¡Carrito Vacío!</h4>
+            <p>Parece que no has añadido nada todavía. <a asp-controller="Home" asp-action="Index">Explora nuestro menú aquí.</a></p>
+        </div>
+    }
+    else
+    {
+        <div class="row">
+            <div class="col-lg-8">
+                @foreach (var item in Model)
+                {
+                    decimal subtotalItem = item.PrecioTotal;
+                    total += subtotalItem;
+
+                    <div class="card mb-3 shadow-sm">
+                        <div class="card-body">
+                            <div class="row align-items-center">
+                                <div class="col-8">
+                                    <!-- Nombre del Producto Base -->
+                                    <h5 class="card-title text-dark">@item.NombreProducto (@item.Cantidad x)</h5>
+
+                                    <!-- Detalles del Decorator (Extras) -->
+                                    @if (item.Extras.Any())
+                                    {
+                                        <small class="text-info font-weight-bold">Extras:</small>
+                                        <ul class="list-unstyled ml-3">
+                                            @foreach (var extra in item.Extras)
+                                            {
+                                                <li><small class="text-muted">@extra</small></li>
+                                            }
+                                        </ul>
+                                    }
+                                </div>
+                                <div class="col-4 text-right">
+                                    <p class="h5 text-success mb-0">
+                                        $@subtotalItem.ToString("N2")
+                                    </p>
+                                    <!-- Botón para eliminar (requiere acción en el controlador) -->
+                                    <form asp-controller="Carrito" asp-action="RemoveFromCart" method="post" style="display:inline;">
+                                        <input type="hidden" name="itemId" value="@item.Id" />
+                                        <button type="submit" class="btn btn-sm btn-outline-danger mt-2">Eliminar</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+
+            <div class="col-lg-4">
+                <!-- Resumen del Carrito -->
+                <div class="card bg-light shadow-lg">
+                    <div class="card-body">
+                        <h4 class="card-title mb-4">Resumen del Pedido</h4>
+                        <hr />
+                        <div class="d-flex justify-content-between h4">
+                            <span>Total a Pagar:</span>
+                            <span class="text-danger font-weight-bold">$@total.ToString("N2")</span>
+                        </div>
+
+                        <button class="btn btn-success btn-lg btn-block mt-4" disabled>
+                            <i class="fas fa-check-circle"></i> Confirmar Orden (Falta lógica de Checkout)
+                        </button>
+
+                        <a asp-controller="Home" asp-action="Index" class="btn btn-outline-primary btn-block mt-2">
+                            Seguir Comprando
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

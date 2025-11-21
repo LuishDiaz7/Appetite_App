@@ -1,33 +1,36 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Appetite_App.Services;
 using Appetite_App.DTOs;
 using Appetite_App.Models;
 using Microsoft.AspNetCore.Identity;
-using System.Security.Claims;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.Cookies;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Collections.Generic;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization; // Importante para [Authorize]
+using System;
 
 namespace Appetite_App.Controllers
 {
     public class AuthController : Controller
     {
-        // Variable inyectada: _userManagementService
-        private readonly UserManagement _userManagementService;
         private readonly UserManager<Usuario> _userManager;
+        // 🚨 NUEVO: Objeto para manejar la autenticación (creación de cookies)
+        private readonly SignInManager<Usuario> _signInManager;
 
-        // Constructor modificado para inyectar ambos servicios
-        public AuthController(UserManagement userManagementService, UserManager<Usuario> userManager)
+        // 🚨 CAMBIO: Solo inyectamos los Identity Managers
+        public AuthController(UserManager<Usuario> userManager, SignInManager<Usuario> signInManager)
         {
-            _userManagementService = userManagementService;
             _userManager = userManager;
+            _signInManager = signInManager;
         }
 
         // GET: /Auth/Login
         public IActionResult Login()
         {
+            // Si el usuario ya está autenticado, redirigir al home
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             return View();
         }
 
@@ -35,59 +38,37 @@ namespace Appetite_App.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(string email, string password)
         {
-            // Verificación inicial de nulos (previene ArgumentNullException)
             if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
             {
                 ModelState.AddModelError("", "Por favor, ingrese email y contraseña.");
                 return View();
             }
 
-            // CORRECCIÓN CRÍTICA: Se llama a _userManagementService y se espera Usuario? o null.
-            // Esto resuelve los errores CS0019, CS0103 y CS8130.
-            var user = await _userManagementService.Login(email, password);
+            // 1. Encontrar usuario por email
+            var user = await _userManager.FindByEmailAsync(email);
 
             if (user != null)
             {
-                // La contraseña es correcta; creamos Claims e iniciamos la sesión de Cookies.
-                var claims = new List<Claim>
+                // 2. Usar SignInManager para verificar contraseña y emitir cookie
+                var result = await _signInManager.PasswordSignInAsync(user, password,
+                                                                    isPersistent: true,
+                                                                    lockoutOnFailure: false);
+
+                if (result.Succeeded)
                 {
-                    new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-                    new Claim(ClaimTypes.Email, user.Email),
-                    new Claim(ClaimTypes.Name, user.Nombre)
-                };
-
-                // Obtener roles del usuario desde Identity
-                var roles = await _userManager.GetRolesAsync(user);
-                claims.AddRange(roles.Select(role => new Claim(ClaimTypes.Role, role)));
-
-                // ----------------------------------------------------------------------------------
-                // CORRECCIÓN 1: Usar IdentityConstants.ApplicationScheme para ClaimsIdentity
-                // ----------------------------------------------------------------------------------
-                var claimsIdentity = new ClaimsIdentity(
-                    claims, IdentityConstants.ApplicationScheme);
-
-                var authProperties = new AuthenticationProperties
-                {
-                    IsPersistent = true
-                };
-
-                // ----------------------------------------------------------------------------------
-                // CORRECCIÓN 2: Usar IdentityConstants.ApplicationScheme para SignInAsync
-                // ----------------------------------------------------------------------------------
-                await HttpContext.SignInAsync(
-                    IdentityConstants.ApplicationScheme,
-                    new ClaimsPrincipal(claimsIdentity),
-                    authProperties);
-
-                // Redirigir según el rol
-                if (await _userManager.IsInRoleAsync(user, "Administrador"))
-                {
-                    return RedirectToAction("Index", "Admin");
+                    // Opcional: Mantener la sesión para compatibilidad con código antiguo
+                    // Usar Identity es preferible a la Session
+                    if (await _userManager.IsInRoleAsync(user, "Administrador"))
+                    {
+                        HttpContext.Session.SetString("UsuarioRol", "Administrador");
+                        return RedirectToAction("Index", "Admin");
+                    }
+                    HttpContext.Session.SetString("UsuarioRol", "Cliente");
+                    return RedirectToAction("Index", "Home");
                 }
-                return RedirectToAction("Index", "Home");
             }
 
-            // Si falla el login (user es null)
+            // Si falla el login
             ModelState.AddModelError("", "Credenciales inválidas.");
             return View();
         }
@@ -102,27 +83,49 @@ namespace Appetite_App.Controllers
         [HttpPost]
         public async Task<IActionResult> Registro(RegistroUsuarioDTO dto)
         {
-            // Llama al servicio que usa el PATRÓN FACTORY METHOD
-            Usuario? nuevoUser = await _userManagementService.RegistrarUsuario(dto);
-
-            if (nuevoUser != null)
+            if (!ModelState.IsValid)
             {
-                // Redirigir al usuario para que inicie sesión con sus nuevas credenciales
+                return View(dto);
+            }
+
+            // Crear el nuevo objeto Usuario
+            var nuevoUser = new Usuario
+            {
+                UserName = dto.Email, // Usar Email como UserName para Identity
+                Email = dto.Email,
+                Nombre = dto.Nombre
+            };
+
+            // 1. Usar UserManager para crear el usuario y hashear la contraseña
+            var result = await _userManager.CreateAsync(nuevoUser, dto.Password);
+
+            if (result.Succeeded)
+            {
+                // 2. Asignar el rol "Cliente" por defecto
+                await _userManager.AddToRoleAsync(nuevoUser, "Cliente");
+
+                // Redirigir al login o iniciar sesión directamente
                 return RedirectToAction("Login", "Auth");
             }
 
-            ModelState.AddModelError("", "El email ya está registrado.");
-            return View();
+            // Si falla la creación (ej: email duplicado, requisitos de contraseña)
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError(string.Empty, error.Description);
+            }
+
+            return View(dto);
         }
 
-        // POST: /Auth/Logout
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Logout()
         {
-            // Se usa el método Identity por defecto, que es más seguro.
-            await HttpContext.SignOutAsync(IdentityConstants.ApplicationScheme);
+            await _signInManager.SignOutAsync();
+
+            HttpContext.Session.Clear();
+
             return RedirectToAction("Index", "Home");
-        }
+        }      
     }
 }

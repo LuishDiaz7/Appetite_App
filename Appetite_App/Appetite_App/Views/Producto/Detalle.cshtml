@@ -1,0 +1,79 @@
+﻿@model Appetite_App.Models.Producto
+
+@{
+    ViewData["Title"] = Model.Nombre;
+}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6">
+            <!-- Bloque de Imagen del Producto -->
+            @if (!string.IsNullOrEmpty(Model.ImagenUrl))
+            {
+                <img src="@Model.ImagenUrl"
+                     class="img-fluid rounded shadow-lg"
+                     alt="@Model.Nombre"
+                     style="object-fit: cover; max-height: 400px; width: 100%;">
+            }
+            else
+            {
+                <div class="text-center p-5 bg-light rounded" style="height: 400px;">
+                    <i class="fas fa-utensils fa-5x text-secondary"></i>
+                    <p class="mt-3 text-muted">Sin imagen disponible</p>
+                </div>
+            }
+        </div>
+
+        <div class="col-md-6">
+            <h1 class="display-4" style="color: #FF6347;">@Model.Nombre</h1>
+            <p class="lead text-muted">@Model.Descripcion</p>
+
+            <hr />
+
+            <h3 class="text-success mb-4">Precio Base: $@Model.Precio.ToString("N2")</h3>
+
+            
+            <form asp-action="AddToCart" asp-controller="Carrito" method="post">
+                <input type="hidden" name="idProducto" value="@Model.IdProducto" />
+
+                <div class="form-group mb-3">
+                    <label for="cantidad" class="h5">Cantidad:</label>
+                    <input type="number" id="cantidad" name="cantidad" value="1" min="1" class="form-control form-control-lg w-50" required />
+                </div>
+
+                @if (Model.IdCategoria == 1) 
+                {
+                    <h4 class="mt-4 text-primary">Opciones (Decorator):</h4>
+                    <p class="text-info">Selecciona los extras que modifican el precio final.</p>
+
+                    <div class="form-check fs-5">
+                        <input class="form-check-input" type="checkbox" name="quesoExtra" value="true" id="queso_@Model.IdProducto">
+                        <label class="form-check-label" for="queso_@Model.IdProducto">Queso Extra (+$2.00)</label>
+                    </div>
+                    <div class="form-check fs-5">
+                        <input class="form-check-input" type="checkbox" name="carneDoble" value="true" id="carne_@Model.IdProducto">
+                        <label class="form-check-label" for="carne_@Model.IdProducto">Carne Doble (+$5.00)</label>
+                    </div>
+                }
+                else if (Model.IdCategoria == 2) 
+                {
+                    <h4 class="mt-4 text-primary">Opciones (Decorator):</h4>
+                    <div class="form-check fs-5">
+                        <input class="form-check-input" type="checkbox" name="bebidaGrande" value="true" id="bebida_@Model.IdProducto">
+                        <label class="form-check-label" for="bebida_@Model.IdProducto">Tamaño Grande (+$1.50)</label>
+                    </div>
+                }
+
+               
+                <button type="submit" class="btn btn-danger btn-lg mt-5 w-100 shadow">
+                    <i class="fas fa-shopping-cart"></i> Añadir al Carrito
+                </button>
+            </form>
+
+            <a asp-action="Catalogo" asp-route-id="@Model.IdCategoria" class="btn btn-outline-secondary mt-3 w-100">
+                <i class="fas fa-arrow-left"></i> Volver al Catálogo
+            </a>
+
+        </div>
+    </div>
+</div>

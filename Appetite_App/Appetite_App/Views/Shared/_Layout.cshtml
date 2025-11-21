@@ -12,10 +12,12 @@
         body {
             background-color: #f8f9fa;
         }
+
         .navbar-brand {
             font-weight: bold;
             color: #dc3545 !important;
         }
+
         .card {
             box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,0.075);
         }
@@ -42,7 +44,6 @@
                     <ul class="navbar-nav">
                         @if (SignInManager.IsSignedIn(User))
                         {
-                            // Lógica para usuarios autenticados
                             <li class="nav-item">
                                 <span class="nav-link text-dark">Hola, @User.Identity.Name</span>
                             </li>
@@ -50,7 +51,7 @@
                             @if (User.IsInRole("Administrador"))
                             {
                                 <li class="nav-item">
-                                    <a class="nav-link text-danger font-weight-bold" asp-area="" asp-controller="Admin" asp-action="Dashboard">
+                                    <a class="nav-link text-danger font-weight-bold" asp-area="" asp-controller="Admin" asp-action="Index">
                                         <i class="fas fa-tools"></i> Panel Admin
                                     </a>
                                 </li>
@@ -59,22 +60,20 @@
                             <li class="nav-item">
                                 @if (User.Identity.IsAuthenticated)
                                 {
-                                    @* Usamos un formulario POST para invocar [HttpPost] Logout y enviar el token CSRF *@
-                                    <form asp-controller="Auth" asp-action="Logout" method="post" class="form-inline">
-                                        @Html.AntiForgeryToken()
-                                        <button type="submit" class="nav-link btn btn-link text-danger">
+                                    <form method="post" asp-controller="Auth" asp-action="Logout" style="display:inline;">
+                                        <button type="submit" class="btn btn-link nav-link" style="padding:0; vertical-align:baseline; color: #dc3545;">
                                             Cerrar Sesión
                                         </button>
                                     </form>
                                 }
                                 else
                                 {
-                                    @* Si no está autenticado, muestra los enlaces de Login y Registro *@
+                                    
                                     <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Login">Iniciar Sesión</a>
                                 }
                             </li>
 
-                            @* Asegúrate de tener el enlace de Registro también si no está en otro lugar *@
+                            
                             @if (!User.Identity.IsAuthenticated)
                             {
                                 <li class="nav-item">

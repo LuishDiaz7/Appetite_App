@@ -14,9 +14,10 @@
         @foreach (var categoria in Model)
         {
             <div class="col-auto p-1">
-                <a asp-controller="Productos"
-                   asp-action="Categoria"
-                   asp-route-id="@categoria.IdCategoria" class="btn btn-outline-danger btn-lg rounded-pill"
+                <a asp-controller="Producto" 
+                   asp-action="Catalogo" 
+                   asp-route-categoryId="@categoria.IdCategoria" 
+                   class="btn btn-outline-danger btn-lg rounded-pill"
                    style="min-width: 150px;">
                     @categoria.Nombre
                 </a>

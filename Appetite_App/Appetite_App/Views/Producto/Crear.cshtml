@@ -1,0 +1,75 @@
+﻿@model Appetite_App.Models.Producto
+
+@{
+    ViewData["Title"] = "Crear Nuevo Producto";
+}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <h2>Crear Nuevo Producto</h2>
+
+            <div class="mb-4">
+                <a asp-controller="Producto" asp-action="Index" class="btn btn-outline-secondary">
+                    <i class="fas fa-arrow-left"></i> Volver al Listado
+                </a>
+            </div>
+
+            <form asp-action="Crear" enctype="multipart/form-data" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="Nombre" class="control-label"></label>
+                    <input asp-for="Nombre" class="form-control" />
+                    <span asp-validation-for="Nombre" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="Descripcion" class="control-label"></label>
+                    <textarea asp-for="Descripcion" class="form-control" rows="3"></textarea>
+                    <span asp-validation-for="Descripcion" class="text-danger"></span>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 form-group mb-3">
+                        <label asp-for="Precio" class="control-label"></label>
+                        <input asp-for="Precio" class="form-control" />
+                        <span asp-validation-for="Precio" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6 form-group mb-3">
+                        <label asp-for="Stock" class="control-label"></label>
+                        <input asp-for="Stock" class="form-control" />
+                        <span asp-validation-for="Stock" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="IdCategoria" class="control-label">Categoría</label>
+                    <select asp-for="IdCategoria" class="form-control" asp-items="ViewBag.Categorias">
+                        <option value="">Seleccione...</option>
+                    </select>
+                    <span asp-validation-for="IdCategoria" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-4 p-3 border rounded bg-light">
+                    <label for="imagenFile" class="control-label mb-2"><strong>Foto del Producto (Opcional)</strong></label>
+
+                    <input type="file" name="imagenFile" id="imagenFile" accept="image/*" class="form-control" />
+                    <small class="form-text text-muted">Seleccione una imagen para su producto.</small>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save"></i> Guardar Producto
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

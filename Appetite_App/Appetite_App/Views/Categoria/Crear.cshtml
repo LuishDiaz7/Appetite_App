@@ -1,0 +1,47 @@
+﻿@model Appetite_App.Models.Categoria
+
+@{
+    ViewData["Title"] = "Crear Nueva Categoría";
+}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <h2>Crear Nueva Categoría</h2>
+
+            <div class="mb-4">
+                <a asp-controller="Categoria" asp-action="Index" class="btn btn-outline-secondary">
+                    <i class="fas fa-arrow-left"></i> Volver al Listado
+                </a>
+            </div>
+            <form asp-action="Crear" enctype="multipart/form-data" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="Nombre" class="control-label"></label>
+                    <input asp-for="Nombre" class="form-control" />
+                    <span asp-validation-for="Nombre" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-4 p-3 border rounded bg-light">
+                    <label for="imagenFile" class="control-label mb-2"><strong>Foto de la Categoría (Opcional)</strong></label>
+
+                    <input type="file" name="imagenFile" id="imagenFile" accept="image/*" class="form-control" />
+                    <small class="form-text text-muted">Seleccione una imagen para su categoría.</small>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save"></i> Guardar Categoría
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

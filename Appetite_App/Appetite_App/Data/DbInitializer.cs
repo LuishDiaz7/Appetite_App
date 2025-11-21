@@ -18,12 +18,9 @@ namespace Appetite_App.Data
             var userManager = scope.ServiceProvider.GetRequiredService<UserManager<Usuario>>();
             var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole<int>>>();
 
-            // CRÍTICO: Eliminar la base de datos anterior para asegurar el nuevo esquema de Identity
-            Console.WriteLine("[DB INIT] Eliminando base de datos existente...");
-            await context.Database.EnsureDeletedAsync();
-
             // 1. Asegurar la creación de la base de datos y migraciones
-            Console.WriteLine("[DB INIT] Creando la base de datos y aplicando migraciones...");
+            // CRÍTICO: SOLO APLICAR MIGRACIONES. NO BORRAR LA BASE DE DATOS.
+            Console.WriteLine("[DB INIT] Aplicando migraciones a la base de datos...");
             await context.Database.MigrateAsync();
 
             Console.WriteLine("[DB INIT] Verificando y creando Roles...");
@@ -40,9 +37,8 @@ namespace Appetite_App.Data
             }
 
             // 3. Crear Usuario Administrador (si no existe)
-            // CAMBIO CRÍTICO: Usaremos un nuevo email para forzar la recreación del usuario
-            const string adminEmail = "admin2@appetite.com"; // <<<<< NUEVO EMAIL
-            const string adminPassword = "AdminPassword123!"; // <<< MISMA CONTRASEÑA
+            const string adminEmail = "admin2@appetite.com";
+            const string adminPassword = "AdminPassword123!";
 
             Console.WriteLine($"[DB INIT] Verificando usuario Admin: {adminEmail}");
 
@@ -51,7 +47,6 @@ namespace Appetite_App.Data
                 var adminUser = new Usuario
                 {
                     Nombre = "Admin Global",
-                    // Asegúrese de que UserName y Email sean el nuevo email
                     UserName = adminEmail,
                     Email = adminEmail,
                     EmailConfirmed = true
@@ -67,7 +62,6 @@ namespace Appetite_App.Data
                 }
                 else
                 {
-                    // Esto es clave: imprime los errores si la creación falla (ej. requerimientos de contraseña)
                     Console.WriteLine($"[DB INIT ERROR] Falló la creación del Administrador.");
                     foreach (var error in result.Errors)
                     {
@@ -79,8 +73,6 @@ namespace Appetite_App.Data
             {
                 Console.WriteLine($"[DB INIT] Usuario Administrador ({adminEmail}) ya existe. Saltando creación.");
             }
-
-            // --- El resto de su inicializador (Cliente, Categorías, Productos) se mantiene igual ---
 
             // 4. Crear Usuario Cliente de Prueba (si no existe)
             const string clientEmail = "cliente@appetite.com";
@@ -113,7 +105,7 @@ namespace Appetite_App.Data
                 Console.WriteLine($"[DB INIT] Usuario Cliente ({clientEmail}) ya existe. Saltando creación.");
             }
 
-            // 5. Verificar y Crear CATEGORÍAS
+            // 5. Verificar y Crear CATEGORÍAS (Solo si no existen)
             if (!context.Categorias.Any())
             {
                 var categorias = new Categoria[]
@@ -128,7 +120,7 @@ namespace Appetite_App.Data
                 await context.SaveChangesAsync();
             }
 
-            // 6. Verificar y Crear PRODUCTOS
+            // 6. Verificar y Crear PRODUCTOS (Solo si no existen)
             if (!context.Productos.Any())
             {
                 // Recuperar IDs de categorías
@@ -143,7 +135,8 @@ namespace Appetite_App.Data
                         Precio = 10.50m,
                         Stock = 50,
                         Activo = true,
-                        IdCategoria = categoriaHamb
+                        IdCategoria = categoriaHamb,
+                        ImagenUrl = "/images/default/hamburguesa_clasica.jpg" // Agregué una URL por defecto
                     },
                     new Producto {
                         Nombre = "Vegetariana",
@@ -151,7 +144,8 @@ namespace Appetite_App.Data
                         Precio = 8.00m,
                         Stock = 30,
                         Activo = true,
-                        IdCategoria = categoriaHamb
+                        IdCategoria = categoriaHamb,
+                        ImagenUrl = "/images/default/hamburguesa_vegetariana.jpg"
                     },
                     new Producto {
                         Nombre = "Gaseosa Personal",
@@ -159,7 +153,8 @@ namespace Appetite_App.Data
                         Precio = 2.50m,
                         Stock = 100,
                         Activo = true,
-                        IdCategoria = categoriaBebida
+                        IdCategoria = categoriaBebida,
+                        ImagenUrl = "/images/default/gaseosa_personal.jpg"
                     }
                 };
 

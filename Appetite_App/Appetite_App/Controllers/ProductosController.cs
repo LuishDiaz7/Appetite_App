@@ -33,6 +33,6 @@ public class ProductosController : Controller
         ViewData["Title"] = categoria.Nombre;
         ViewData["CategoriaNombre"] = categoria.Nombre; // Usaremos esto en la vista
 
-        return View(productos); // Usaremos la vista 'Categoria.cshtml'
+        return View("~/Views/Producto/Categoria.cshtml", productos);
     }
 }

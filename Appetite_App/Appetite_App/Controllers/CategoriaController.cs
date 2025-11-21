@@ -1,52 +1,43 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Appetite_App.Models;
 using Appetite_App.Repositories;
-using Microsoft.AspNetCore.Hosting; 
+using Microsoft.AspNetCore.Hosting;
 using System.IO;
 using System.Threading.Tasks;
 using System;
-using Microsoft.AspNetCore.Http; // Necesario para IFormFile
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization; // NECESARIO para [Authorize]
 
 namespace Appetite.Controllers
 {
-    // Este controlador ahora manejará la gestión de categorías
+    // 1. AUTORIZACIÓN: Solo usuarios con el rol "Administrador" pueden acceder.
+    [Authorize(Roles = "Administrador")]
     public class CategoriaController : Controller
     {
         private readonly ICategoriaRepository _categoriaRepository;
-        // NUEVO: Inyección del entorno de hosting para manejar rutas físicas (wwwroot)
         private readonly IWebHostEnvironment _webHostEnvironment;
 
-        // Constructor modificado para inyectar IWebHostEnvironment
         public CategoriaController(ICategoriaRepository categoriaRepository, IWebHostEnvironment webHostEnvironment)
         {
             _categoriaRepository = categoriaRepository;
             _webHostEnvironment = webHostEnvironment;
         }
 
-        // Método de autenticación basado en Sesión (según su implementación)
-        private bool EsAdministrador()
-        {
-            var rol = HttpContext.Session.GetString("UsuarioRol");
-            return rol == "Administrador";
-        }
-
-        // Lógica central para guardar el archivo en wwwroot/images/categorias
+        // Lógica central para guardar el archivo (se mantiene sin cambios)
         private async Task<string?> GuardarArchivoImagen(IFormFile? imagenFile, string? existingImagePath)
         {
             if (imagenFile == null)
             {
-                // Si no se sube un nuevo archivo, mantiene la ruta existente.
                 return existingImagePath;
             }
 
             // 1. Eliminar la imagen anterior si existe (para evitar archivos huérfanos)
             if (!string.IsNullOrEmpty(existingImagePath))
             {
-                // existingImagePath debe ser una ruta relativa como /images/categorias/archivo.jpg
                 string fullPathToDelete = Path.Combine(_webHostEnvironment.WebRootPath, existingImagePath.TrimStart('/'));
                 if (System.IO.File.Exists(fullPathToDelete))
                 {
-                    System.IO.File.Delete(fullPathToDelete);
+                    try { System.IO.File.Delete(fullPathToDelete); } catch { /* Ignorar errores de eliminación */ }
                 }
             }
 
@@ -60,7 +51,7 @@ namespace Appetite.Controllers
             }
 
             // 3. Generar un nombre único y guardar
-            string uniqueFileName = Guid.NewGuid().ToString() + "_" + imagenFile.FileName;
+            string uniqueFileName = Guid.NewGuid().ToString() + Path.GetExtension(imagenFile.FileName);
             string filePath = Path.Combine(uploadsFolder, uniqueFileName);
 
             using (var fileStream = new FileStream(filePath, FileMode.Create))
@@ -73,82 +64,82 @@ namespace Appetite.Controllers
         }
 
 
+        // =========================================================================================
+        // ACCIÓN INDEX (LISTADO)
+        // =========================================================================================
         public async Task<IActionResult> Index()
         {
-            if (!EsAdministrador())
-                return RedirectToAction("Login", "Auth");
-
             var categorias = await _categoriaRepository.GetAllAsync();
-            return View(categorias);
+            // 🚨 CORRECCIÓN RUTA DE VISTA: Apuntar explícitamente a la vista dentro de Admin.
+            return View("~/Views/Categoria/Index.cshtml", categorias);
         }
 
+        // =========================================================================================
+        // ACCIÓN CREAR GET
+        // =========================================================================================
         [HttpGet]
         public IActionResult Crear()
         {
-            if (!EsAdministrador())
-                return RedirectToAction("Login", "Auth");
-
-            return View();
+            // 🚨 CORRECCIÓN RUTA DE VISTA: Apuntar explícitamente a la vista dentro de Admin.
+            return View("~/Views/Categoria/Crear.cshtml");
         }
 
+        // =========================================================================================
+        // ACCIÓN CREAR POST
+        // =========================================================================================
         [HttpPost]
-        // CAMBIO CRÍTICO: Recibir el archivo IFormFile
         public async Task<IActionResult> Crear(Categoria categoria, IFormFile? imagenFile)
         {
-            if (!EsAdministrador())
-                return RedirectToAction("Login", "Auth");
-
-            // VALIDACIÓN: Aunque no siempre se usa ModelState.IsValid en el POST
-            // con try-catch, es bueno tenerlo. Aquí asumiremos que el try-catch
-            // maneja la mayoría de los errores de datos.
+            // NOTA: Se ha eliminado la verificación manual de EsAdministrador()
 
             try
             {
-                // NUEVO: Guarda la imagen y actualiza la URL en el modelo
                 categoria.ImagenUrl = await GuardarArchivoImagen(imagenFile, null);
+
+                // Advertencia CS8601 potencial si el modelo no está bien configurado:
+                // Asegúrate de que las propiedades del modelo (Nombre, etc.) no sean nulas si son non-nullable.
 
                 await _categoriaRepository.AddAsync(categoria);
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
             {
-                // IMPORTANTE: Use TempData para errores si hace Redirect, o ViewBag si retorna la View
                 ViewBag.Error = "Error al crear categoría: " + ex.Message;
-                return View(categoria);
+                // 🚨 CORRECCIÓN RUTA DE VISTA: Devolver la vista CrearCategoria con el modelo si hay error.
+                return View("~/Views/Categoria/Crear.cshtml", categoria);
             }
         }
 
+        // =========================================================================================
+        // ACCIÓN EDITAR GET
+        // =========================================================================================
         [HttpGet]
         public async Task<IActionResult> Editar(int id)
         {
-            if (!EsAdministrador())
-                return RedirectToAction("Login", "Auth");
-
             var categoria = await _categoriaRepository.GetByIdAsync(id);
             if (categoria == null)
             {
-                // Manejo si la categoría no existe
                 TempData["Error"] = "Categoría no encontrada.";
                 return RedirectToAction(nameof(Index));
             }
 
-            return View(categoria);
+            // 🚨 CORRECCIÓN RUTA DE VISTA: Apuntar a la vista de edición correcta.
+            // (Asumo que la tienes como 'EditarCategoria.cshtml' o similar en /Admin)
+            return View("~/Views/Categoria/Editar.cshtml", categoria);
         }
 
+        // =========================================================================================
+        // ACCIÓN EDITAR POST
+        // =========================================================================================
         [HttpPost]
-        // CAMBIO CRÍTICO: Recibir el archivo IFormFile y el Id
         public async Task<IActionResult> Editar(int id, Categoria categoria, IFormFile? imagenFile)
         {
-            if (!EsAdministrador())
-                return RedirectToAction("Login", "Auth");
-
             if (id != categoria.IdCategoria)
             {
                 TempData["Error"] = "ID de Categoría no coincide.";
                 return RedirectToAction(nameof(Index));
             }
 
-            // Re-obtener la categoría de la BD para obtener la ruta de la imagen existente
             var categoriaExistente = await _categoriaRepository.GetByIdAsync(id);
             if (categoriaExistente == null)
             {
@@ -158,40 +149,40 @@ namespace Appetite.Controllers
 
             try
             {
-                // 1. Manejar la subida de archivos (elimina el anterior si se sube uno nuevo)
+                // Guarda el nuevo archivo y elimina el anterior. Retorna la nueva URL o la existente.
                 string? nuevaUrl = await GuardarArchivoImagen(imagenFile, categoriaExistente.ImagenUrl);
 
-                // 2. Actualizar las propiedades del objeto existente
                 categoriaExistente.Nombre = categoria.Nombre;
-                categoriaExistente.ImagenUrl = nuevaUrl; // Asignar la nueva (o misma) URL
+                // 🔑 CRÍTICO: Aseguramos que la URL se actualice en el modelo que se va a guardar.
+                categoriaExistente.ImagenUrl = nuevaUrl;
 
-                // 3. Guardar en la BD
                 await _categoriaRepository.UpdateAsync(categoriaExistente);
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
             {
                 ViewBag.Error = "Error al actualizar categoría: " + ex.Message;
-                return View(categoria); // Devuelve la categoría enviada por el formulario
+                // 🚨 CORRECCIÓN RUTA DE VISTA: Devolver la vista EditarCategoria con el modelo si hay error.
+                return View("~/Views/Categoria/Editar.cshtml", categoria);
             }
         }
 
+        // =========================================================================================
+        // ACCIÓN ELIMINAR POST
+        // =========================================================================================
         [HttpPost]
         public async Task<IActionResult> Eliminar(int id)
         {
-            if (!EsAdministrador())
-                return RedirectToAction("Login", "Auth");
-
             try
             {
                 var categoria = await _categoriaRepository.GetByIdAsync(id);
                 if (categoria != null && !string.IsNullOrEmpty(categoria.ImagenUrl))
                 {
-                    // Lógica para eliminar el archivo físico asociado antes de eliminar la BD
+                    // Lógica para eliminar el archivo físico asociado
                     string fullPathToDelete = Path.Combine(_webHostEnvironment.WebRootPath, categoria.ImagenUrl.TrimStart('/'));
                     if (System.IO.File.Exists(fullPathToDelete))
                     {
-                        System.IO.File.Delete(fullPathToDelete);
+                        try { System.IO.File.Delete(fullPathToDelete); } catch { /* Ignorar errores de eliminación */ }
                     }
                 }
 

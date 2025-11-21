@@ -1,0 +1,66 @@
+﻿@model Appetite_App.Models.Categoria
+
+@{
+    ViewData["Title"] = "Editar Categoría";
+}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <h2>Editar Categoría: @Model.Nombre</h2>
+
+            <!-- Botón de Retroceso al listado de categorías -->
+            <div class="mb-4">
+                <a asp-controller="Categoria" asp-action="Index" class="btn btn-outline-secondary">
+                    <i class="fas fa-arrow-left"></i> Volver al Listado
+                </a>
+            </div>
+
+            <form asp-action="Editar" enctype="multipart/form-data" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <!-- ID es necesario para el POST -->
+                <input type="hidden" asp-for="IdCategoria" />
+
+                <!-- Campo Nombre -->
+                <div class="form-group mb-3">
+                    <label asp-for="Nombre" class="control-label"></label>
+                    <input asp-for="Nombre" class="form-control" />
+                    <span asp-validation-for="Nombre" class="text-danger"></span>
+                </div>
+
+                <!-- Campo Descripcion (si existe en su modelo) -->
+                @* Si su modelo TIENE el campo Descripcion, DESCOMENTE las siguientes líneas *@
+                @* <div class="form-group mb-3">
+                    <label asp-for="Descripcion" class="control-label"></label>
+                    <textarea asp-for="Descripcion" class="form-control" rows="3"></textarea>
+                    <span asp-validation-for="Descripcion" class="text-danger"></span>
+                </div> *@
+
+                <!-- Campo para Subir Archivo -->
+                <div class="form-group mb-4 p-3 border rounded bg-light">
+                    <label for="imagenFile" class="control-label mb-2"><strong>Foto de la Categoría (Reemplazar)</strong></label>
+
+                    @if (!string.IsNullOrEmpty(Model.ImagenUrl))
+                    {
+                        <div class="mb-3">
+                            <label>Imagen Actual:</label>
+                            <img src="@Model.ImagenUrl" alt="Imagen actual de @Model.Nombre" style="max-width: 150px; height: auto; border-radius: 8px; border: 1px solid #ccc;" />
+                            <!-- Campo oculto para mantener la URL si no se sube una nueva -->
+                            <input type="hidden" asp-for="ImagenUrl" />
+                        </div>
+                    }
+
+                    <!-- IFormFile se enlaza por el atributo 'name' en el controlador -->
+                    <input type="file" name="imagenFile" id="imagenFile" accept="image/*" class="form-control" />
+                    <small class="form-text text-muted">Seleccione una nueva imagen para reemplazar la actual. Si no selecciona nada, la imagen actual se mantendrá.</small>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success">
+                        <i class="fas fa-sync-alt"></i> Actualizar Categoría
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

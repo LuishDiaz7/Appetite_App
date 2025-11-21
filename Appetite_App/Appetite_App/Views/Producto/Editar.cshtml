@@ -1,0 +1,73 @@
+﻿@model Appetite_App.Models.Producto
+
+@{
+    ViewData["Title"] = "Editar Producto";
+}
+
+<h2 class="mb-4">✏️ Editar Producto: @Model.Nombre</h2>
+
+<div class="card">
+    <div class="card-body">
+        <form method="post" asp-action="Editar" enctype="multipart/form-data">
+            <input type="hidden" name="IdProducto" value="@Model.IdProducto" />
+            <input type="hidden" name="ImagenUrl" value="@Model.ImagenUrl" />
+
+            <div class="mb-3">
+                <label class="form-label">Nombre</label>
+                <input type="text" name="Nombre" value="@Model.Nombre" class="form-control" required />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Descripción</label>
+                <textarea name="Descripcion" class="form-control" rows="3">@Model.Descripcion</textarea>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <label class="form-label">Precio</label>
+                    <input type="number" name="Precio" value="@Model.Precio" class="form-control" step="0.01" required />
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label class="form-label">Stock</label>
+                    <input type="number" name="Stock" value="@Model.Stock" class="form-control" required />
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label class="form-label">Categoría</label>
+                    <div class="col-md-4 mb-3">
+                        <label class="form-label">Categoría</label>
+                        <select name="IdCategoria"
+                                class="form-control"
+                                required
+                                asp-for="IdCategoria"
+                                asp-items="ViewBag.Categorias">
+                            <option value="">Seleccione...</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group mb-4 p-3 border rounded bg-light">
+                <label for="imagenFile" class="control-label mb-2"><strong>Foto del Producto (Reemplazar)</strong></label>
+
+                @if (!string.IsNullOrEmpty(Model.ImagenUrl))
+                {
+                    <div class="mb-3">
+                        <label>Imagen Actual:</label>
+                        <img src="@Model.ImagenUrl" alt="Imagen actual de @Model.Nombre" style="max-width: 150px; height: auto; border-radius: 8px; border: 1px solid #ccc;" />
+                    </div>
+                }
+                
+                <input type="file" name="imagenFile" id="imagenFile" accept="image/*" class="form-control" />
+                <small class="form-text text-muted">Seleccione una nueva imagen para reemplazar la actual. Si no selecciona nada, la imagen actual se mantendrá.</small>
+            </div>
+
+
+            <div class="d-flex justify-content-between mt-4">
+                <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+                <button type="submit" class="btn btn-warning">Actualizar Producto</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

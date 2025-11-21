@@ -1,5 +1,5 @@
-using Microsoft.Extensions.Logging; 
-using System; 
+using Microsoft.Extensions.Logging;
+using System;
 using System.Threading.Tasks;
 using Appetite_App.Data;
 using Appetite_App.Repositories;
@@ -15,12 +15,11 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-// Configurar DbContext con SQL Server
+// Configurar DbContext con SQL Server (Scoped por defecto)
 builder.Services.AddDbContext<AppetiteContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// Registrar SINGLETON 
-builder.Services.AddSingleton<DatabaseConnectionManager>();
+// --- REGISTRO DE REPOSITORIOS Y SERVICIOS ---
 
 // Registrar repositorios
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
@@ -29,26 +28,28 @@ builder.Services.AddScoped<ICategoriaRepository, CategoriaRepository>();
 builder.Services.AddScoped<IProductoRepository, Appetite_App.Data.Repositories.ProductoRepository>();
 
 // Registrar servicios
-builder.Services.AddScoped<UserManagement>();
 builder.Services.AddScoped<OrdenService>();
 builder.Services.AddScoped<IProductoService, ProductoService>();
+
+// --- CONFIGURACIÓN DE ASP.NET CORE IDENTITY ---
 
 builder.Services.AddIdentity<Usuario, IdentityRole<int>>(options =>
 {
     // Requisitos de Sign-in
     options.SignIn.RequireConfirmedAccount = false;
 
-    // Requisitos de Contraseña TEMPORALMENTE RELAJADOS para asegurar la creación del usuario Admin
+    // Requisitos de Contraseña (Ajustar antes de producción)
     options.Password.RequireDigit = false;
     options.Password.RequireLowercase = false;
     options.Password.RequireNonAlphanumeric = false;
     options.Password.RequireUppercase = false;
-    options.Password.RequiredLength = 6; // Longitud mínima de 6 caracteres
+    options.Password.RequiredLength = 6;
 })
     .AddEntityFrameworkStores<AppetiteContext>()
     .AddDefaultTokenProviders();
 
-// Configurar sesión
+// --- CONFIGURACIÓN DE SESIÓN ---
+
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession(options =>
 {
@@ -59,13 +60,14 @@ builder.Services.AddSession(options =>
 
 var app = builder.Build();
 
-// Inicializar base de datos con datos de prueba
+// --- INICIALIZACIÓN DE LA BASE DE DATOS (Solo aplica migraciones y seed, NO borra la BD) ---
+
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
     try
     {
-        // Se llama al inicializador para forzar el borrado y la recreación
+        // Inicializar base de datos con datos de prueba
         await DbInitializer.Initialize(services);
     }
     catch (Exception ex)
@@ -75,6 +77,8 @@ using (var scope = app.Services.CreateScope())
     }
 }
 
+// --- PIPELINE DE MIDDLEWARE ---
+
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
@@ -83,18 +87,19 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+// CRÍTICO para servir imágenes y CSS/JS desde wwwroot
 app.UseStaticFiles();
 
 app.UseRouting();
 
+// El orden es: Routing -> Session -> Authentication -> Authorization
 app.UseSession();
-
 app.UseAuthentication();
-
 app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}"); 
+    pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
