@@ -8,128 +8,174 @@ using System.Linq;
 using System.Threading.Tasks;
 using Appetite_App.Repositories;
 
-
-// Implementación del controlador
-public class CarritoController : Controller
+namespace Appetite_App.Controllers
 {
-    private readonly IProductoRepository _productoRepository;
-    private const string CarritoSessionKey = "CarritoDeCompras";
-
-    // Reemplaza IProductoRepository por tu contexto de Entity Framework o servicio de datos real
-    public CarritoController(IProductoRepository productoRepository)
+    /// <summary>
+    /// Gestiona la lógica del carrito de compras, incluyendo la adición, visualización y eliminación de ítems.
+    /// Es la capa donde se aplica el Patrón Decorator para calcular el precio final de los productos con adiciones.
+    /// </summary>
+    public class CarritoController : Controller
     {
-        _productoRepository = productoRepository;
-    }
+        private readonly IProductoRepository _productoRepository;
 
-    // Muestra el carrito
-    public IActionResult Index()
-    {
-        var carrito = GetCarritoFromSession();
-        return View(carrito);
-    }
+        /// <summary>
+        /// Clave constante utilizada para almacenar y recuperar la lista del carrito de compras de la sesión HTTP.
+        /// </summary>
+        private const string CarritoSessionKey = "CarritoDeCompras";
 
-    // 🔑 ACCIÓN CRÍTICA: Recibe datos de Detalle.cshtml y aplica el Decorator
-    [HttpPost]
-    [ValidateAntiForgeryToken]
-    public async Task<IActionResult> AddToCart(
-        int idProducto,
-        int cantidad,
-        bool quesoExtra,
-        bool carneDoble,
-        bool bebidaGrande)
-    {
-        // 1. Obtener el producto base de la DB (necesitas el precio base)
-        var productoBaseDb = await _productoRepository.GetByIdAsync(idProducto);
-
-        if (productoBaseDb == null || cantidad <= 0)
+        /// <summary>
+        /// Inicializa una nueva instancia del controlador <see cref="CarritoController"/>.
+        /// </summary>
+        /// <param name="productoRepository">El repositorio para acceder a la capa de persistencia de productos.</param>
+        public CarritoController(IProductoRepository productoRepository)
         {
-            return RedirectToAction("Index", "Home");
+            _productoRepository = productoRepository;
         }
 
-        // 2. Inicializar el componente base (Patrón Decorator)
-        IProductoComponente componenteDecorado = new ProductoConcreto(productoBaseDb);
+        // ---------------------------------------------
+        // VISTA DEL CARRITO
+        // ---------------------------------------------
 
-        // Lista para guardar las descripciones de los extras
-        var descripcionExtras = new List<string>();
-
-        // 3. Aplicar los Decoradores Condicionalmente
-        if (quesoExtra)
+        /// <summary>
+        /// Muestra la vista con el contenido actual del carrito de compras almacenado en la sesión.
+        /// </summary>
+        /// <returns>La vista del carrito, que contiene una lista de objetos <see cref="ItemCarrito"/>.</returns>
+        [HttpGet]
+        public IActionResult Index()
         {
-            componenteDecorado = new QuesoExtraDecorator(componenteDecorado);
-            descripcionExtras.Add("Queso Extra");
+            List<ItemCarrito> carrito = GetCarritoFromSession();
+            return View(carrito);
         }
 
-        if (carneDoble)
+        // ---------------------------------------------
+        // AÑADIR AL CARRITO (Patrón Decorator)
+        // ---------------------------------------------
+
+        /// <summary>
+        /// Añade un producto al carrito de compras, aplicando dinámicamente adiciones (Decorators)
+        /// para modificar su precio y descripción final.
+        /// </summary>
+        /// <param name="idProducto">El identificador único del producto base a agregar.</param>
+        /// <param name="cantidad">La cantidad de unidades del producto base.</param>
+        /// <param name="quesoExtra">Indica si se aplica la adición de queso extra.</param>
+        /// <param name="carneDoble">Indica si se aplica la adición de carne doble.</param>
+        /// <param name="bebidaGrande">Indica si se aplica la adición de bebida grande.</param>
+        /// <returns>Redirecciona a la acción <see cref="Index"/> del carrito tras añadir el ítem.</returns>
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AddToCart(
+            int idProducto,
+            int cantidad,
+            bool quesoExtra,
+            bool carneDoble,
+            bool bebidaGrande)
         {
-            componenteDecorado = new CarneDobleDecorator(componenteDecorado);
-            descripcionExtras.Add("Carne Doble");
+            Producto productoBaseDb = await _productoRepository.GetByIdAsync(idProducto);
+
+            if (productoBaseDb == null || cantidad <= 0)
+            {
+                // Manejar error o redirigir
+                return RedirectToAction("Catalogo", "Producto");
+            }
+
+            // 1. Inicializar el componente base (Patrón Decorator)
+            IProductoComponente componenteDecorado = new ProductoConcreto(productoBaseDb);
+
+            // 2. Aplicar los Decoradores Condicionalmente
+            if (quesoExtra)
+            {
+                componenteDecorado = new QuesoExtraDecorator(componenteDecorado);
+            }
+
+            if (carneDoble)
+            {
+                componenteDecorado = new CarneDobleDecorator(componenteDecorado);
+            }
+
+            if (bebidaGrande)
+            {
+                componenteDecorado = new BebidaGrandeDecorator(componenteDecorado);
+            }
+
+            // 3. Crear el ItemCarrito con los valores finales
+            decimal precioUnitarioFinal = componenteDecorado.GetPrecio();
+            string descripcionFinal = componenteDecorado.GetDescripcion();
+
+            ItemCarrito newItem = new ItemCarrito
+            {
+                IdProducto = idProducto,
+                NombreProducto = productoBaseDb.Nombre,
+                Cantidad = cantidad,
+                PrecioBaseUnitario = productoBaseDb.Precio,
+                PrecioTotal = precioUnitarioFinal * cantidad,
+                // Nota: La descripción de los extras ahora está incrustada en DescripcionCompleta por el Decorator
+                DescripcionCompleta = descripcionFinal
+            };
+
+            // 4. Guardar el nuevo item en la sesión
+            AddItemToSession(newItem);
+
+            return RedirectToAction(nameof(Index));
         }
 
-        if (bebidaGrande)
+        // ---------------------------------------------
+        // ELIMINAR DEL CARRITO
+        // ---------------------------------------------
+
+        /// <summary>
+        /// Elimina un ítem del carrito de compras basándose en su identificador de producto.
+        /// </summary>
+        /// <param name="id">El identificador único del producto a eliminar del carrito.</param>
+        /// <returns>Redirecciona a la acción <see cref="Index"/> del carrito tras la eliminación.</returns>
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult RemoveFromCart(int id)
         {
-            componenteDecorado = new BebidaGrandeDecorator(componenteDecorado);
-            descripcionExtras.Add("Tamaño Grande");
+            List<ItemCarrito> carrito = GetCarritoFromSession();
+            ItemCarrito itemToRemove = carrito.FirstOrDefault(i => i.IdProducto == id);
+
+            if (itemToRemove != null)
+            {
+                carrito.Remove(itemToRemove);
+                TempData["Success"] = $"Producto '{itemToRemove.NombreProducto}' eliminado del carrito.";
+
+                // Actualizar la sesión con la lista modificada
+                HttpContext.Session.SetString(CarritoSessionKey, JsonConvert.SerializeObject(carrito));
+            }
+            else
+            {
+                TempData["Error"] = "El producto no se encontró en el carrito.";
+            }
+
+            return RedirectToAction(nameof(Index));
         }
 
-        // 4. Calcular el precio y la descripción final usando el Decorator
-        decimal precioUnitarioFinal = componenteDecorado.GetPrecio();
-        string descripcionFinal = componenteDecorado.GetDescripcion(); // Contiene el nombre del producto + todos los extras
+        // ---------------------------------------------
+        // MÉTODOS PRIVADOS DE GESTIÓN DE SESIÓN
+        // ---------------------------------------------
 
-        // 5. Crear el ItemCarrito para almacenar
-        var newItem = new ItemCarrito
+        /// <summary>
+        /// Recupera la lista del carrito de compras de la sesión HTTP.
+        /// Si no existe un carrito en la sesión, retorna una lista vacía.
+        /// </summary>
+        /// <returns>Una lista de objetos <see cref="ItemCarrito"/>.</returns>
+        private List<ItemCarrito> GetCarritoFromSession()
         {
-            IdProducto = idProducto,
-            NombreProducto = productoBaseDb.Nombre,
-            Cantidad = cantidad,
-            PrecioBaseUnitario = productoBaseDb.Precio,
-            PrecioTotal = precioUnitarioFinal * cantidad,
-            DescripcionExtras = descripcionExtras,
-            DescripcionCompleta = descripcionFinal
-        };
-
-        // 6. Guardar el nuevo item en la sesión
-        AddItemToSession(newItem);
-
-        return RedirectToAction("Index");
-    }
-
-    // 7. Métodos Auxiliares para manejo de Sesión (usando System.Text.Json o Newtonsoft)
-    private List<ItemCarrito> GetCarritoFromSession()
-    {
-        var json = HttpContext.Session.GetString(CarritoSessionKey);
-        return json == null ? new List<ItemCarrito>() : JsonConvert.DeserializeObject<List<ItemCarrito>>(json);
-    }
-
-    private void AddItemToSession(ItemCarrito item)
-    {
-        var carrito = GetCarritoFromSession();
-        carrito.Add(item);
-        HttpContext.Session.SetString(CarritoSessionKey, JsonConvert.SerializeObject(carrito));
-    }
-
-    [HttpPost]
-    [ValidateAntiForgeryToken]
-    public IActionResult RemoveFromCart(int id)
-    {
-        var carrito = GetCarritoFromSession();
-        var itemToRemove = carrito.FirstOrDefault(i => i.IdProducto == id);
-
-        if (itemToRemove != null)
-        {
-            carrito.Remove(itemToRemove);
-
-            TempData["Success"] = $"Producto '{itemToRemove.NombreProducto}' eliminado del carrito.";
-        }
-        else
-        {
-            TempData["Error"] = "El producto no se encontró en el carrito.";
+            string json = HttpContext.Session.GetString(CarritoSessionKey);
+            return json == null
+                ? new List<ItemCarrito>()
+                : JsonConvert.DeserializeObject<List<ItemCarrito>>(json) ?? new List<ItemCarrito>();
         }
 
-        // 3. Guardar la lista de carrito actualizada en la sesión usando tu método SetString/JsonConvert
-        // Esto soluciona el error de SetObject.
-        HttpContext.Session.SetString(CarritoSessionKey, JsonConvert.SerializeObject(carrito));
-
-        // Redirigir de vuelta a la vista del carrito
-        return RedirectToAction("Index");
+        /// <summary>
+        /// Añade un <see cref="ItemCarrito"/> a la lista en la sesión HTTP.
+        /// </summary>
+        /// <param name="item">El ítem del carrito a agregar.</param>
+        private void AddItemToSession(ItemCarrito item)
+        {
+            List<ItemCarrito> carrito = GetCarritoFromSession();
+            carrito.Add(item);
+            HttpContext.Session.SetString(CarritoSessionKey, JsonConvert.SerializeObject(carrito));
+        }
     }
 }

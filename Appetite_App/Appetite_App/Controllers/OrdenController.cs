@@ -1,48 +1,53 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Appetite_App.Models;
 using Appetite_App.Repositories;
-using Microsoft.AspNetCore.Authorization; // 🚨 NECESARIO para [Authorize]
+using Microsoft.AspNetCore.Authorization;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
-namespace Appetite.Controllers
+namespace Appetite_App.Controllers
 {
-    // 🚨 CAMBIO 1: Aplicar el atributo de autorización a nivel de controlador
+    /// <summary>
+    /// Controlador encargado de la visualización y gestión de órdenes de compra.
+    /// Este controlador está restringido exclusivamente a usuarios con el rol de Administrador.
+    /// </summary>
     [Authorize(Roles = "Administrador")]
     public class OrdenController : Controller
     {
         private readonly IOrdenRepository _ordenRepository;
 
+        /// <summary>
+        /// Inicializa una nueva instancia del controlador <see cref="OrdenController"/>.
+        /// </summary>
+        /// <param name="ordenRepository">El repositorio para acceder a la capa de persistencia de las órdenes.</param>
         public OrdenController(IOrdenRepository ordenRepository)
         {
             _ordenRepository = ordenRepository;
         }
 
-        // 🚨 CAMBIO 2: ELIMINAMOS el método EsAdministrador()
-        /*
-        private bool EsAdministrador()
+        /// <summary>
+        /// Muestra la lista de todas las órdenes registradas en el sistema.
+        /// </summary>
+        /// <returns>Una vista que contiene una colección de objetos <see cref="PreOrden"/>.</returns>
+        [HttpGet]
+        public async Task<IActionResult> Index()
         {
-            var rol = HttpContext.Session.GetString("UsuarioRol");
-            return rol == "Administrador";
-        }
-        */
-
-        public async Task<IActionResult> Index() // Muestra todas las órdenes para el Admin
-        {
-            // 🚨 CAMBIO 3: ELIMINAMOS la verificación manual
-            // if (!EsAdministrador())
-            //     return RedirectToAction("Login", "Auth");
-
-            var ordenes = await _ordenRepository.GetAllAsync();
+            IEnumerable<PreOrden> ordenes = await _ordenRepository.GetAllAsync();
             return View(ordenes);
         }
 
+        /// <summary>
+        /// Muestra los detalles de una orden específica.
+        /// </summary>
+        /// <param name="id">El identificador único de la orden que se desea visualizar.</param>
+        /// <returns>
+        /// La vista con el objeto <see cref="PreOrden"/> si se encuentra la orden;
+        /// de lo contrario, retorna un resultado 404 <see cref="NotFoundResult"/>.
+        /// </returns>
+        [HttpGet]
         public async Task<IActionResult> Detalle(int id)
         {
-            // 🚨 CAMBIO 3: ELIMINAMOS la verificación manual
-            // if (!EsAdministrador())
-            //     return RedirectToAction("Login", "Auth");
-
-            var orden = await _ordenRepository.GetByIdAsync(id);
+            PreOrden? orden = await _ordenRepository.GetByIdAsync(id);
             if (orden == null)
             {
                 return NotFound();
@@ -50,6 +55,7 @@ namespace Appetite.Controllers
             return View(orden);
         }
 
-        // Se pueden añadir aquí acciones para cambiar el estado de la orden (Actualizar) si es necesario.
+        // Nota: Las acciones para modificar el estado de la orden (como "CambiarEstado")
+        // se manejan idealmente en el AdminController o un servicio dedicado para desacoplamiento.
     }
 }

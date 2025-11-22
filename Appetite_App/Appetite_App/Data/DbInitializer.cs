@@ -2,28 +2,44 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace Appetite_App.Data
 {
+    /// <summary>
+    /// Clase estática responsable de inicializar la base de datos de la aplicación.
+    /// Realiza la aplicación de migraciones, la creación de roles, y la siembra (seeding) de datos
+    /// esenciales como usuarios administradores, clientes de prueba y categorías de productos.
+    /// </summary>
     public static class DbInitializer
     {
+        /// <summary>
+        /// Método principal de inicialización que orquesta la configuración de la base de datos.
+        /// Se llama durante el arranque de la aplicación (<c>Program.cs</c>).
+        /// </summary>
+        /// <param name="serviceProvider">El proveedor de servicios del contenedor de Inyección de Dependencias.</param>
         public static async Task Initialize(IServiceProvider serviceProvider)
         {
-            // Usamos un scope para obtener los servicios necesarios
+            // Se utiliza un scope para garantizar que los servicios obtenidos sean desechados correctamente
             using var scope = serviceProvider.CreateScope();
             var context = scope.ServiceProvider.GetRequiredService<AppetiteContext>();
             var userManager = scope.ServiceProvider.GetRequiredService<UserManager<Usuario>>();
             var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole<int>>>();
 
+            // CORRECCIÓN CS0718: Se cambió DbInitializer por AppetiteContext como argumento de tipo
+            // ya que los tipos estáticos no pueden ser usados en genéricos.
+            var logger = scope.ServiceProvider.GetRequiredService<ILogger<AppetiteContext>>();
+
             // 1. Asegurar la creación de la base de datos y migraciones
             // CRÍTICO: SOLO APLICAR MIGRACIONES. NO BORRAR LA BASE DE DATOS.
-            Console.WriteLine("[DB INIT] Aplicando migraciones a la base de datos...");
+            logger.LogInformation("[DB INIT] Aplicando migraciones a la base de datos...");
             await context.Database.MigrateAsync();
 
-            Console.WriteLine("[DB INIT] Verificando y creando Roles...");
+            logger.LogInformation("[DB INIT] Verificando y creando Roles...");
 
             // 2. Crear Roles
             string[] roleNames = { "Administrador", "Cliente" };
@@ -32,7 +48,7 @@ namespace Appetite_App.Data
                 if (!await roleManager.RoleExistsAsync(roleName))
                 {
                     await roleManager.CreateAsync(new IdentityRole<int>(roleName));
-                    Console.WriteLine($"[DB INIT] Rol '{roleName}' creado.");
+                    logger.LogInformation($"[DB INIT] Rol '{roleName}' creado.");
                 }
             }
 
@@ -40,7 +56,7 @@ namespace Appetite_App.Data
             const string adminEmail = "admin2@appetite.com";
             const string adminPassword = "AdminPassword123!";
 
-            Console.WriteLine($"[DB INIT] Verificando usuario Admin: {adminEmail}");
+            logger.LogInformation($"[DB INIT] Verificando usuario Admin: {adminEmail}");
 
             if (await userManager.FindByEmailAsync(adminEmail) == null)
             {
@@ -56,22 +72,22 @@ namespace Appetite_App.Data
 
                 if (result.Succeeded)
                 {
-                    Console.WriteLine($"[DB INIT] Usuario Administrador ({adminEmail}) creado exitosamente.");
+                    logger.LogInformation($"[DB INIT] Usuario Administrador ({adminEmail}) creado exitosamente.");
                     await userManager.AddToRoleAsync(adminUser, "Administrador");
-                    Console.WriteLine($"[DB INIT] Rol 'Administrador' asignado a {adminEmail}.");
+                    logger.LogInformation($"[DB INIT] Rol 'Administrador' asignado a {adminEmail}.");
                 }
                 else
                 {
-                    Console.WriteLine($"[DB INIT ERROR] Falló la creación del Administrador.");
+                    logger.LogError($"[DB INIT ERROR] Falló la creación del Administrador.");
                     foreach (var error in result.Errors)
                     {
-                        Console.WriteLine($" - Código: {error.Code}, Descripción: {error.Description}");
+                        logger.LogError($" - Código: {error.Code}, Descripción: {error.Description}");
                     }
                 }
             }
             else
             {
-                Console.WriteLine($"[DB INIT] Usuario Administrador ({adminEmail}) ya existe. Saltando creación.");
+                logger.LogInformation($"[DB INIT] Usuario Administrador ({adminEmail}) ya existe. Saltando creación.");
             }
 
             // 4. Crear Usuario Cliente de Prueba (si no existe)
@@ -93,16 +109,16 @@ namespace Appetite_App.Data
                 if (result.Succeeded)
                 {
                     await userManager.AddToRoleAsync(clientUser, "Cliente");
-                    Console.WriteLine($"[DB INIT] Usuario Cliente ({clientEmail}) creado exitosamente.");
+                    logger.LogInformation($"[DB INIT] Usuario Cliente ({clientEmail}) creado exitosamente.");
                 }
                 else
                 {
-                    Console.WriteLine($"[DB INIT ERROR] Falló la creación del Cliente.");
+                    logger.LogError($"[DB INIT ERROR] Falló la creación del Cliente.");
                 }
             }
             else
             {
-                Console.WriteLine($"[DB INIT] Usuario Cliente ({clientEmail}) ya existe. Saltando creación.");
+                logger.LogInformation($"[DB INIT] Usuario Cliente ({clientEmail}) ya existe. Saltando creación.");
             }
 
             // 5. Verificar y Crear CATEGORÍAS (Solo si no existen)
@@ -116,14 +132,14 @@ namespace Appetite_App.Data
                 };
 
                 await context.Categorias.AddRangeAsync(categorias);
-                Console.WriteLine("[DB INIT] Categorías añadidas.");
+                logger.LogInformation("[DB INIT] Categorías añadidas.");
                 await context.SaveChangesAsync();
             }
 
             // 6. Verificar y Crear PRODUCTOS (Solo si no existen)
             if (!context.Productos.Any())
             {
-                // Recuperar IDs de categorías
+                // Recuperar IDs de categorías (Asumimos que las categorías existen en este punto)
                 var categoriaHamb = context.Categorias.First(c => c.Nombre == "Hamburguesas").IdCategoria;
                 var categoriaBebida = context.Categorias.First(c => c.Nombre == "Bebidas").IdCategoria;
 
@@ -136,7 +152,7 @@ namespace Appetite_App.Data
                         Stock = 50,
                         Activo = true,
                         IdCategoria = categoriaHamb,
-                        ImagenUrl = "/images/default/hamburguesa_clasica.jpg" // Agregué una URL por defecto
+                        ImagenUrl = "/images/default/hamburguesa_clasica.jpg" // URL por defecto
                     },
                     new Producto {
                         Nombre = "Vegetariana",
@@ -159,10 +175,10 @@ namespace Appetite_App.Data
                 };
 
                 await context.Productos.AddRangeAsync(productos);
-                Console.WriteLine("[DB INIT] Productos añadidos.");
+                logger.LogInformation("[DB INIT] Productos añadidos.");
                 await context.SaveChangesAsync();
             }
-            Console.WriteLine("[DB INIT] Inicialización de datos completada.");
+            logger.LogInformation("[DB INIT] Inicialización de datos completada.");
         }
     }
 }

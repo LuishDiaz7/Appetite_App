@@ -1,16 +1,22 @@
 ﻿using Appetite_App.DTOs;
 using Appetite_App.Models;
 using Appetite_App.Patterns.Factory;
-using Appetite_App.Repositories; // Aún necesario si se usa para otras operaciones no Auth
+using Appetite_App.Repositories;
 using Microsoft.AspNetCore.Identity;
-using System.Collections.Generic; // Necesario para List/IEnumerable
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace Appetite_App.Services
 {
-    // Este servicio orquesta la creación y autenticación de usuarios usando Identity
+    /// <summary>
+    /// Servicio de gestión de usuarios que integra las funcionalidades de ASP.NET Core Identity
+    /// (<c>UserManager</c>, <c>SignInManager</c>, <c>RoleManager</c>) y el Patrón Factory Method
+    /// para manejar la autenticación, el registro y la creación de diferentes tipos de usuarios
+    /// (Administrador o Cliente).
+    /// </summary>
     public class UserManagement
     {
         // Servicios de Identity necesarios para la gestión de usuarios
@@ -18,9 +24,16 @@ namespace Appetite_App.Services
         private readonly SignInManager<Usuario> _signInManager;
         private readonly RoleManager<IdentityRole<int>> _roleManager;
 
-        // Mantener el repositorio si se usa para otras consultas CRUD específicas
+        // Repositorio para consultas CRUD específicas que complementen a Identity
         private readonly IUsuarioRepository _usuarioRepository;
 
+        /// <summary>
+        /// Inicializa una nueva instancia de <see cref="UserManagement"/> con todas sus dependencias.
+        /// </summary>
+        /// <param name="userManager">Servicio para gestionar usuarios.</param>
+        /// <param name="signInManager">Servicio para manejar el inicio de sesión y la validación de credenciales.</param>
+        /// <param name="roleManager">Servicio para gestionar los roles de Identity.</param>
+        /// <param name="usuarioRepository">Repositorio de acceso a datos de la entidad <see cref="Usuario"/>.</param>
         public UserManagement(
             UserManager<Usuario> userManager,
             SignInManager<Usuario> signInManager,
@@ -33,44 +46,53 @@ namespace Appetite_App.Services
             _usuarioRepository = usuarioRepository;
         }
 
-        // CORRECCIÓN 1: Lógica de Login usando Identity
+        /// <summary>
+        /// Intenta iniciar sesión validando las credenciales del usuario contra la base de datos de Identity.
+        /// </summary>
+        /// <param name="email">El correo electrónico del usuario.</param>
+        /// <param name="password">La contraseña proporcionada.</param>
+        /// <returns>El objeto <see cref="Usuario"/> si la autenticación es exitosa; de lo contrario, <c>null</c>.</returns>
         public async Task<Usuario?> Login(string email, string password)
         {
-            // Verificación para evitar ArgumentNullException (ya debe tener este bloque)
             if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
             {
-                return null; // Cambiado de (false, null) a null
+                return null;
             }
 
             var user = await _userManager.FindByEmailAsync(email);
 
             if (user == null)
             {
-                return null; // Cambiado de (false, null) a null
+                return null;
             }
 
-            // Usamos CheckPasswordSignInAsync, que solo verifica la contraseña.
-            // Usar PasswordSignInAsync puede interferir con la lógica de cookies del controlador.
+            // Usamos CheckPasswordSignInAsync para verificar solo la contraseña y evitar efectos secundarios 
+            // de autenticación de cookies que deben manejarse en el controlador.
             var result = await _signInManager.CheckPasswordSignInAsync(user, password, lockoutOnFailure: false);
 
             if (result.Succeeded)
             {
-                return user; // Cambiado de (true, user) a user
+                return user;
             }
 
-            return null; // Cambiado de (false, null) a null
+            return null;
         }
 
-        // CORRECCIÓN 2: Lógica de Registro usando Identity y Patrón Factory
+        /// <summary>
+        /// Registra un nuevo usuario en la aplicación utilizando el Patrón Factory Method.
+        /// 
+        /// </summary>
+        /// <param name="dto">El DTO (<see cref="RegistroUsuarioDTO"/>) que contiene la información de registro, incluyendo el rol deseado.</param>
+        /// <returns>El objeto <see cref="Usuario"/> recién creado y persistido con su rol asignado, o <c>null</c> si el registro falló (ej. usuario ya existe).</returns>
         public async Task<Usuario?> RegistrarUsuario(RegistroUsuarioDTO dto)
         {
-            // Usamos UserManager para verificar si el usuario ya existe por email
+            // 1. Verificación: El usuario ya existe por email
             if (await _userManager.FindByEmailAsync(dto.Email) != null)
             {
                 return null; // El usuario ya existe
             }
 
-            // 1. Determinar qué Fábrica usar y el rol a asignar (PATRÓN FACTORY METHOD)
+            // 2. Determinar qué Fábrica usar y el rol a asignar (PATRÓN FACTORY METHOD)
             UsuarioFactory factory;
             string rolAsignado;
 
@@ -85,22 +107,19 @@ namespace Appetite_App.Services
                 rolAsignado = "Cliente";
             }
 
-            // 2. Crear el objeto Usuario usando la Fábrica
+            // 3. Crear el objeto Usuario usando la Fábrica
             var user = factory.CrearUsuario(dto);
-            // Nota: El método CrearUsuario en la Factory ya no debe recibir el hash de password.
+            user.UserName = dto.Email; // Identity usa el campo 'UserName' para el login
 
-            // 3. Persistir y hashear la contraseña usando Identity UserManager
-            // Identity usa el campo 'UserName' para el login, lo configuramos para usar el Email
-            user.UserName = dto.Email;
-
+            // 4. Persistir y hashear la contraseña usando Identity UserManager
             var result = await _userManager.CreateAsync(user, dto.Password);
 
             if (result.Succeeded)
             {
-                // 4. Asignar el rol usando Identity Role Manager
+                // 5. Asignar el rol usando Identity Role Manager
                 if (!await _roleManager.RoleExistsAsync(rolAsignado))
                 {
-                    // Esto se repite aquí por si acaso, aunque idealmente ya existe desde DbInitializer
+                    // Bloque de seguridad: crea el rol si por alguna razón no lo hizo DbInitializer
                     await _roleManager.CreateAsync(new IdentityRole<int>(rolAsignado));
                 }
 
@@ -109,13 +128,20 @@ namespace Appetite_App.Services
                 return user;
             }
 
-            return null; // Falló la creación
+            // Falló la creación
+            return null;
         }
 
-        // Nuevo método para que el administrador pueda ver todos los usuarios (usa el repositorio o UserManager)
+        /// <summary>
+        /// Obtiene una lista de todos los usuarios registrados en el sistema de manera asíncrona.
+        /// </summary>
+        /// <remarks>
+        /// Este método está destinado a ser utilizado por administradores para propósitos de gestión.
+        /// </remarks>
+        /// <returns>Una lista de todos los objetos <see cref="Usuario"/>.</returns>
         public async Task<List<Usuario>> ObtenerTodos()
         {
-            // Es mejor usar UserManager para obtener la lista, ya que está diseñado para ello.
+            // Se utiliza el UserManager para obtener la lista, aprovechando su integración con EF Core.
             return (await _userManager.Users.ToListAsync());
         }
     }

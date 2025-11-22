@@ -1,145 +1,210 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Authorization;
-using Appetite_App.Services;
-using Appetite_App.Repositories;
+﻿using Appetite_App.DTOs;
 using Appetite_App.Models;
-using Appetite_App.DTOs;
+using Appetite_App.Patterns.Decorator;
+using Appetite_App.Repositories;
+using Appetite_App.Services;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Linq;
 using System.Security.Claims; // Para obtener el Id del usuario
 using System.Text.Json; // Para manejar la sesión
+using System.Threading.Tasks;
 
-[Authorize(Roles = "Cliente")]
-public class ClienteController : Controller
+namespace Appetite_App.Controllers
 {
-    private readonly IProductoRepository _productoRepository;
-    private readonly OrdenService _ordenService;
-    private readonly IUsuarioRepository _usuarioRepository;
-
-    public ClienteController(IProductoRepository productoRepository, OrdenService ordenService, IUsuarioRepository usuarioRepository)
+    /// <summary>
+    /// Controlador que maneja la interacción del cliente con el sistema, incluyendo
+    /// la visualización del catálogo, la gestión del carrito y la finalización de la compra.
+    /// Requiere que el usuario esté autenticado con el rol de Cliente.
+    /// </summary>
+    [Authorize(Roles = "Cliente")]
+    public class ClienteController : Controller
     {
-        _productoRepository = productoRepository;
-        _ordenService = ordenService;
-        _usuarioRepository = usuarioRepository;
-    }
+        private readonly IProductoRepository _productoRepository;
+        private readonly OrdenService _ordenService;
+        private readonly IUsuarioRepository _usuarioRepository;
 
-    // ---------------------------------------------
-    // CATÁLOGO DE PRODUCTOS (Usa el Patrón DECORATOR en la vista)
-    // ---------------------------------------------
-    public async Task<IActionResult> Index()
-    {
-        var productos = await _productoRepository.GetAllAsync();
-        return View(productos);
-    }
-
-    // ---------------------------------------------
-    // GESTIÓN DEL CARRITO (Usa la sesión)
-    // ---------------------------------------------
-
-    private List<CarritoItemDTO> GetCarrito()
-    {
-        var carritoJson = HttpContext.Session.GetString("Carrito");
-        if (string.IsNullOrEmpty(carritoJson))
+        /// <summary>
+        /// Inicializa una nueva instancia del controlador <see cref="ClienteController"/>.
+        /// </summary>
+        /// <param name="productoRepository">El repositorio para acceder a la capa de persistencia de productos.</param>
+        /// <param name="ordenService">El servicio que contiene la lógica de negocio para las órdenes (Builder y Observer).</param>
+        /// <param name="usuarioRepository">El repositorio para acceder a la capa de persistencia de usuarios.</param>
+        public ClienteController(IProductoRepository productoRepository, OrdenService ordenService, IUsuarioRepository usuarioRepository)
         {
-            return new List<CarritoItemDTO>();
+            _productoRepository = productoRepository;
+            _ordenService = ordenService;
+            _usuarioRepository = usuarioRepository;
         }
-        return JsonSerializer.Deserialize<List<CarritoItemDTO>>(carritoJson) ?? new List<CarritoItemDTO>();
-    }
 
-    private void SaveCarrito(List<CarritoItemDTO> carrito)
-    {
-        HttpContext.Session.SetString("Carrito", JsonSerializer.Serialize(carrito));
-    }
+        // ---------------------------------------------
+        // CATÁLOGO DE PRODUCTOS
+        // ---------------------------------------------
 
-    [HttpPost]
-    public async Task<IActionResult> AddToCart(int idProducto, int cantidad, bool quesoExtra, bool carneDoble, bool bebidaGrande)
-    {
-        var carrito = GetCarrito();
-
-        var decoradores = new List<string>();
-        if (quesoExtra) decoradores.Add("QuesoExtra");
-        if (carneDoble) decoradores.Add("CarneDoble");
-        if (bebidaGrande) decoradores.Add("BebidaGrande");
-
-        // Simplemente agregamos al carrito con los decoradores seleccionados.
-        carrito.Add(new CarritoItemDTO
+        /// <summary>
+        /// Muestra el catálogo completo de productos disponibles para el cliente.
+        /// </summary>
+        /// <returns>Una vista que contiene una colección de objetos <see cref="Producto"/>.</returns>
+        [HttpGet]
+        public async Task<IActionResult> Index()
         {
-            IdProducto = idProducto,
-            Cantidad = cantidad,
-            Decoradores = decoradores
-        });
+            IEnumerable<Producto> productos = await _productoRepository.GetAllAsync();
+            return View(productos);
+        }
 
-        SaveCarrito(carrito);
-        return RedirectToAction(nameof(Carrito));
-    }
+        // ---------------------------------------------
+        // GESTIÓN DEL CARRITO (MÉTODOS PRIVADOS DE SESIÓN)
+        // ---------------------------------------------
 
-    public async Task<IActionResult> Carrito()
-    {
-        var carrito = GetCarrito();
-        var detallesCarrito = new List<object>();
-
-        // Usar el OrdenService para aplicar el Patrón Decorator y calcular los precios
-        foreach (var item in carrito)
+        /// <summary>
+        /// Recupera la lista de ítems del carrito de compras de la sesión HTTP.
+        /// </summary>
+        /// <returns>Una lista de objetos <see cref="CarritoItemDTO"/>. Retorna una lista vacía si no existe en sesión.</returns>
+        private List<CarritoItemDTO> GetCarrito()
         {
-            var productoBase = await _productoRepository.GetByIdAsync(item.IdProducto);
-            if (productoBase == null) continue;
-
-            // Simulación del Builder/Decorator para obtener el precio/descripción final
-            // Usaremos el mismo patrón que el OrdenService para la vista:
-            var componente = _ordenService.ConstruirComponente(productoBase, item.Decoradores);
-
-            detallesCarrito.Add(new
+            string? carritoJson = HttpContext.Session.GetString("Carrito");
+            if (string.IsNullOrEmpty(carritoJson))
             {
-                ProductoBase = productoBase.Nombre,
-                Cantidad = item.Cantidad,
-                PrecioUnitario = componente.GetPrecio(),
-                Subtotal = componente.GetPrecio() * item.Cantidad,
-                Descripcion = componente.GetDescripcion(),
-                Decoradores = item.Decoradores
-            });
+                return new List<CarritoItemDTO>();
+            }
+            // Usa System.Text.Json para deserializar
+            return JsonSerializer.Deserialize<List<CarritoItemDTO>>(carritoJson) ?? new List<CarritoItemDTO>();
         }
 
-        ViewBag.Total = detallesCarrito.Sum(d => (decimal)((dynamic)d).Subtotal);
-        return View(detallesCarrito);
-    }
+        /// <summary>
+        /// Guarda la lista actual del carrito de compras en la sesión HTTP.
+        /// </summary>
+        /// <param name="carrito">La lista de objetos <see cref="CarritoItemDTO"/> a guardar.</param>
+        private void SaveCarrito(List<CarritoItemDTO> carrito)
+        {
+            // Usa System.Text.Json para serializar
+            HttpContext.Session.SetString("Carrito", JsonSerializer.Serialize(carrito));
+        }
 
-    // ---------------------------------------------
-    // CHECKOUT (Usa los Patrones BUILDER y OBSERVER)
-    // ---------------------------------------------
+        // ---------------------------------------------
+        // ACCIONES DEL CARRITO
+        // ---------------------------------------------
 
-    [HttpPost]
-    public async Task<IActionResult> Checkout(string direccion)
-    {
-        var userIdString = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-        if (string.IsNullOrEmpty(userIdString)) return RedirectToAction("Login", "Auth");
-        int idUsuario = int.Parse(userIdString);
+        /// <summary>
+        /// Añade un producto con sus posibles decoradores al carrito de compras en la sesión.
+        /// </summary>
+        /// <param name="idProducto">El ID del producto base.</param>
+        /// <param name="cantidad">La cantidad de unidades.</param>
+        /// <param name="quesoExtra">Indica si el Decorador "QuesoExtra" se aplica.</param>
+        /// <param name="carneDoble">Indica si el Decorador "CarneDoble" se aplica.</param>
+        /// <param name="bebidaGrande">Indica si el Decorador "BebidaGrande" se aplica.</param>
+        /// <returns>Redirecciona a la acción <see cref="Carrito"/>.</returns>
+        [HttpPost]
+        [ValidateAntiForgeryToken] // Buena práctica
+        public IActionResult AddToCart(int idProducto, int cantidad, bool quesoExtra, bool carneDoble, bool bebidaGrande)
+        {
+            List<CarritoItemDTO> carrito = GetCarrito();
 
-        var carrito = GetCarrito();
-        if (carrito.Count == 0) return RedirectToAction(nameof(Index));
+            List<string> decoradores = new List<string>();
+            if (quesoExtra) decoradores.Add("QuesoExtra");
+            if (carneDoble) decoradores.Add("CarneDoble");
+            if (bebidaGrande) decoradores.Add("BebidaGrande");
 
-        // 1. Obtener objeto Usuario completo (necesario para el Builder)
-        var usuario = await _usuarioRepository.GetByIdAsync(idUsuario);
-        if (usuario == null) return Unauthorized();
+            carrito.Add(new CarritoItemDTO
+            {
+                IdProducto = idProducto,
+                Cantidad = cantidad,
+                Decoradores = decoradores
+            });
 
-        // 2. Llamar al servicio con el método correcto (CrearOrdenDesdeCarrito)
-        PreOrden nuevaOrden = await _ordenService.CrearOrdenDesdeCarrito(usuario, direccion, carrito);
+            SaveCarrito(carrito);
+            return RedirectToAction(nameof(Carrito));
+        }
 
-        // ... (el resto del método Checkout)
-        // Limpiar carrito después de la orden
-        HttpContext.Session.Remove("Carrito");
+        /// <summary>
+        /// Muestra la vista detallada del carrito de compras, calculando precios finales
+        /// utilizando el Patrón Decorator (mediante <see cref="OrdenService"/>).
+        /// </summary>
+        /// <returns>Una vista que contiene una lista anónima con los detalles de cada ítem (precio, subtotal, descripción).</returns>
+        [HttpGet]
+        public async Task<IActionResult> Carrito()
+        {
+            List<CarritoItemDTO> carrito = GetCarrito();
+            List<object> detallesCarrito = new List<object>();
 
-        TempData["MensajeOrden"] = $"¡Orden #{nuevaOrden.IdOrden} creada con éxito! Se notificó a todos los sistemas.";
-        return RedirectToAction(nameof(MisOrdenes));
-    }
+            // Calcular detalles y aplicar Decorator
+            foreach (CarritoItemDTO item in carrito)
+            {
+                Producto? productoBase = await _productoRepository.GetByIdAsync(item.IdProducto);
+                if (productoBase == null) continue;
 
-    // Muestra las órdenes del cliente (Usa el Patrón Observer indirectamente)
-    public async Task<IActionResult> MisOrdenes()
-    {
-        var userIdString = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-        if (string.IsNullOrEmpty(userIdString)) return RedirectToAction("Login", "Auth");
-        int idUsuario = int.Parse(userIdString);
+                // Usamos el OrdenService para aplicar el patrón Decorator y obtener el precio/descripción final.
+                IProductoComponente componente = _ordenService.ConstruirComponente(productoBase, item.Decoradores);
 
-        // Simulación: Obtener las órdenes del usuario
-        var ordenes = await _ordenService.GetOrdenesPorUsuario(idUsuario);
+                detallesCarrito.Add(new
+                {
+                    ProductoBase = productoBase.Nombre,
+                    Cantidad = item.Cantidad,
+                    PrecioUnitario = componente.GetPrecio(),
+                    Subtotal = componente.GetPrecio() * item.Cantidad,
+                    Descripcion = componente.GetDescripcion(),
+                    Decoradores = item.Decoradores
+                });
+            }
 
-        return View(ordenes);
+            // Calcular el total
+            ViewBag.Total = detallesCarrito.Sum(d => (decimal)((dynamic)d).Subtotal);
+            return View(detallesCarrito);
+        }
+
+        // ---------------------------------------------
+        // CHECKOUT Y ÓRDENES
+        // ---------------------------------------------
+
+        /// <summary>
+        /// Finaliza el proceso de compra. Crea la orden utilizando el Patrón Builder
+        /// y activa las acciones post-creación mediante el Patrón Observer.
+        /// </summary>
+        /// <param name="direccion">La dirección de entrega proporcionada por el cliente.</param>
+        /// <returns>Redirecciona a la acción <see cref="MisOrdenes"/> tras crear la orden.</returns>
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Checkout(string direccion)
+        {
+            // Obtener ID del usuario autenticado
+            string? userIdString = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(userIdString)) return RedirectToAction("Login", "Auth");
+            int idUsuario = int.Parse(userIdString);
+
+            List<CarritoItemDTO> carrito = GetCarrito();
+            if (carrito.Count == 0) return RedirectToAction(nameof(Index));
+
+            // 1. Obtener objeto Usuario completo
+            Usuario? usuario = await _usuarioRepository.GetByIdAsync(idUsuario);
+            if (usuario == null) return Unauthorized();
+
+            // 2. Crear la orden. Esto ejecuta el Builder y el Observer.
+            PreOrden nuevaOrden = await _ordenService.CrearOrdenDesdeCarrito(usuario, direccion, carrito);
+
+            // 3. Limpiar carrito y notificar al usuario
+            HttpContext.Session.Remove("Carrito");
+
+            TempData["MensajeOrden"] = $"¡Orden #{nuevaOrden.IdOrden} creada con éxito! Se notificó a todos los sistemas.";
+            return RedirectToAction(nameof(MisOrdenes));
+        }
+
+        /// <summary>
+        /// Muestra la lista de órdenes históricas realizadas por el cliente autenticado.
+        /// </summary>
+        /// <returns>Una vista que contiene una colección de objetos <see cref="PreOrden"/> del usuario actual.</returns>
+        [HttpGet]
+        public async Task<IActionResult> MisOrdenes()
+        {
+            // Obtener ID del usuario autenticado
+            string? userIdString = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(userIdString)) return RedirectToAction("Login", "Auth");
+            int idUsuario = int.Parse(userIdString);
+
+            // Obtener las órdenes
+            IEnumerable<PreOrden> ordenes = await _ordenService.GetOrdenesPorUsuario(idUsuario);
+
+            return View(ordenes);
+        }
     }
 }
