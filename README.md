@@ -294,4 +294,7 @@ Appetite_App/
 <img width="1715" height="925" alt="image" src="https://github.com/user-attachments/assets/0959a406-1ff7-477b-bc29-99ba7ce80f54" />
 
 
-
+### Documentación y Prototipo: 
+https://docs.google.com/document/d/1q9pGZYPwhJ5uy5eXktQB7OVv3_td7MBb/edit?usp=sharing&ouid=104367277644571477006&rtpof=true&sd=true
+### Sustentación:
+https://drive.google.com/file/d/1nbL9umLl_BogCNJBDZM8D020Pt1eIPSQ/view?usp=sharing
