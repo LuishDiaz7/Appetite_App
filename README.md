@@ -90,7 +90,7 @@ Siga estos pasos para configurar y ejecutar la aplicación localmente:
    ```bash
    dotnet run
    ```
-   La aplicación se iniciará, típicamente en `https://http://localhost:5095`
+   La aplicación se iniciará, típicamente en `https://localhost:5095`
 
 ### Credenciales de Prueba
 
@@ -248,3 +248,50 @@ Appetite_App/
 ---
 
 ## Evidencias
+
+### Login
+
+<img width="1722" height="788" alt="image" src="https://github.com/user-attachments/assets/fa2f50a0-031e-4311-a475-ea048312e800" />
+
+### Registro
+
+<img width="1695" height="956" alt="image" src="https://github.com/user-attachments/assets/dfb4b3d3-f4ea-4ff1-8965-99d220d2dd47" />
+
+### Panel del Administrador
+
+<img width="1702" height="961" alt="image" src="https://github.com/user-attachments/assets/11a9fd83-b9d5-421f-b460-aa771e21aa37" />
+
+### Gestión de Productos
+
+<img width="1733" height="947" alt="image" src="https://github.com/user-attachments/assets/a6f24578-d314-4a0f-9820-21fedd7822b5" />
+
+### Crear Nuevo Producto
+
+<img width="1705" height="1000" alt="image" src="https://github.com/user-attachments/assets/ecf7edca-459d-4651-a3fe-895f3a2e5bde" />
+
+### Gestión de Categorías
+
+<img width="1692" height="843" alt="image" src="https://github.com/user-attachments/assets/90f83e31-6953-4da9-85fa-bdb8c473b3ed" />
+
+### Crear Nueva Categoría
+
+<img width="1673" height="967" alt="image" src="https://github.com/user-attachments/assets/21ab83c5-bf98-4b40-bde4-307281d64fb8" />
+
+### Menú de Categorías (flujo del cliente)
+
+<img width="1717" height="847" alt="image" src="https://github.com/user-attachments/assets/da5b0649-86ef-49c5-bae5-950796279e09" />
+
+### Productos por Categoría 
+
+<img width="1712" height="975" alt="image" src="https://github.com/user-attachments/assets/3b5c10e7-6d7f-4699-9774-2a0883536c30" />
+
+### Detalle Producto
+
+<img width="1718" height="1015" alt="image" src="https://github.com/user-attachments/assets/0f777ff7-8f7e-4a3a-b471-c81f905e11a2" />
+
+### Carrito de Compras
+
+<img width="1715" height="925" alt="image" src="https://github.com/user-attachments/assets/0959a406-1ff7-477b-bc29-99ba7ce80f54" />
+
+
+
