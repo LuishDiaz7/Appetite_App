@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using System;
+using Microsoft.AspNetCore.Http; // Necesario para HttpContext.Session.SetString
 
 namespace Appetite_App.Controllers
 {
@@ -74,7 +75,6 @@ namespace Appetite_App.Controllers
             if (user != null)
             {
                 // 2. Usar SignInManager para verificar contraseña y emitir cookie.
-                // isPersistent: true = "Remember Me"
                 Microsoft.AspNetCore.Identity.SignInResult result = await _signInManager.PasswordSignInAsync(
                     user,
                     model.Password,
@@ -108,7 +108,7 @@ namespace Appetite_App.Controllers
         /// </summary>
         /// <returns>La vista del formulario de registro.</returns>
         [HttpGet]
-        public IActionResult Registro()
+        public IActionResult Register() // RENOMBRADO de Registro a Register
         {
             return View();
         }
@@ -119,11 +119,11 @@ namespace Appetite_App.Controllers
         /// <param name="dto">Los datos del nuevo usuario para el registro.</param>
         /// <returns>
         /// Redirecciona a la acción <see cref="Login"/> si el registro es exitoso; 
-        /// de lo contrario, regresa a la vista de <see cref="Registro"/> con errores de validación.
+        /// de lo contrario, regresa a la vista de <see cref="Register"/> con errores de validación.
         /// </returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Registro(RegistroUsuarioDTO dto)
+        public async Task<IActionResult> Register(RegistroUsuarioDTO dto) // RENOMBRADO de Registro a Register
         {
             if (!ModelState.IsValid)
             {
@@ -135,7 +135,9 @@ namespace Appetite_App.Controllers
             {
                 UserName = dto.Email, // Usar Email como UserName para Identity
                 Email = dto.Email,
-                Nombre = dto.Nombre
+                Nombre = dto.Nombre,
+                // Nota: El PhoneNumber se establecerá automáticamente o debe copiarse del DTO si se usa en el constructor
+                PhoneNumber = dto.PhoneNumber
             };
 
             // 1. Usar UserManager para crear el usuario y hashear la contraseña

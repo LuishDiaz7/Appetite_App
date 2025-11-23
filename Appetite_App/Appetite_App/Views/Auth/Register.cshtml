@@ -8,7 +8,7 @@
     <div class="col-md-4 card p-4 shadow-sm">
         <h2 class="card-title text-center mb-4">Registro de Cliente</h2>
 
-        <form asp-action="Registro">
+        <form asp-action="Register">
             <div asp-validation-summary="All" class="text-danger"></div>
             <input type="hidden" name="Rol" value="Cliente" />
 
@@ -25,6 +25,16 @@
             <div class="form-group mb-4">
                 <label asp-for="Password" class="control-label">Contraseña</label>
                 <input type="password" asp-for="Password" class="form-control" />
+            </div>
+
+            <div class="form-group mb-4">
+                <label asp-for="ConfirmPassword" class="control-label">Confirmar Contraseña</label>
+                <input type="password" asp-for="ConfirmPassword" class="form-control" />
+            </div>
+
+            <div class="form-group mb-4">
+                <label asp-for="PhoneNumber" class="control-label">Teléfono</label>
+                <input asp-for="PhoneNumber" class="form-control" />
             </div>
 
             <div class="form-group mt-3 text-center">
